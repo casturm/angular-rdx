@@ -1,0 +1,48 @@
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS ===================== -->
+    <!-- load bootstrap -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+      body 	{ padding-top:30px; }
+      .form-inline .form-group {
+        margin-left: 0;
+        margin-right: 0;
+      }
+   </style>
+
+    <!-- JS ===================== -->
+    <!-- load angular -->
+    <script src="http://code.angularjs.org/1.2.9/angular.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<!-- apply angular app and controller to our body -->
+<body ng-app="app" ng-controller="MainCtrl">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" ui-sref="#"></a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a ui-sref="home">Home</a></li>
+    <li><a ui-sref="about">About</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <div ui-view>
+
+  </div><!-- /ui-view -->
+</div><!-- /container -->
+
+<div class="footer">
+</div>
+</body>
+</html>
