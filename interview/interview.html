@@ -1,0 +1,29 @@
+<ul class="breadcrumb">
+  <li ng-class="{ 'active' : $state.current.name == 'interview.step1' }">
+    <span ng-if="state.current.name != 'interview.step1'">
+      <a ui-sref="interview.step1">About You</a>
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </span>
+    <span ng-if="state.current.name == 'interview.step1'">
+      About You
+    </span>
+  </li>
+
+  <li ng-class="{ 'active' : $state.current.name == 'interview.step2' }">
+    <span ng-if="state.current.name != 'interview.step2'">
+      <a ui-sref="interview.step2">About Them</a>
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </span>
+    <span ng-if="state.current.name == 'interview.step1'">
+      About You
+    </span>
+  </li>
+
+  <li ng-class="{ 'active' : $state.current.name == 'interview.thankyou' }">
+      Thank You
+  </li>
+
+</ul>
+
+<div ui-view>
+</div>
