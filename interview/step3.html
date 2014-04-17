@@ -1,0 +1,18 @@
+<div class="col-sm-8 col-sm-offset-2">
+
+  <div class="page-header"><h1>More About You</h1></div>
+
+  <form name="form" ng-submit="save(form.$valid, 'interview.thankyou')" novalidate>
+
+      <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_taker.$invalid }">
+        <label class="control-label">Are You a Risk Taker</label><br><br>
+        <input type='radio' class='boolean' value='No' ng-model='interview.risk_taker' autocomplete='off'><label>No</label>
+        <input type='radio' class='boolean' value='Yes' ng-model='interview.risk_taker' autocomplete='off'><label>Yes</label>
+        <p ng-show="submitted && form.risk_taker.$invalid" class="help-block">Risk Taker answer is required</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+</div>
+

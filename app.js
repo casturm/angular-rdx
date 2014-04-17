@@ -1,7 +1,6 @@
 angular.module('rdx', [
-  //'rdx.cases.service',
-  'rdx.cases.controller',
-  'rdx.cases',
+  'rdx.cases.service',
+  'rdx.interview',
   'ui.router'
 ])
 
@@ -23,7 +22,32 @@ angular.module('rdx', [
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'partial-home.html'
+      templateUrl: 'partial-home.html',
+      resolve: {
+        cases: ['cases',
+          function(cases) {
+            return cases.all();
+          }
+        ],
+        cases_service: 'cases'
+      },
+      controller: ['$scope', 'cases', 'cases_service', function($scope, cases, cases_service) {
+        $scope.start = function() {
+          cases_service.start_interview();
+          $scope.$state.go('interview.step1');
+        }
+      }]
+    })
+
+    .state('cases', {
+      url: '/cases',
+      templateUrl: 'cases.list.html',
+      resolve: {
+        cases: 'cases'
+      },
+      controller: ['$scope', 'cases', function($scope, cases) {
+        $scope.cases = cases.current();
+      }]
     })
 
     .state('about', {
@@ -32,25 +56,48 @@ angular.module('rdx', [
     });
 }]);
 
-angular.module('rdx.cases.controller', [
+
+angular.module('rdx.cases.service', [
+
 ])
 
-.controller('interview', ['$scope', function($scope) {
-  console.log("init interview controller");
+.factory('cases', ['$http', function ($http) {
+  var path = 'assets/cases.json';
+  var the_cases = [];
+  var next_id = 2;
+  var cases = $http.get(path).then(function (resp) {
+    the_cases = resp.data.cases;
+    return the_cases;
+  });
 
-  $scope.save = function(isValid, nextStep) {
-    $scope.submitted = true;
-
-    if (isValid) {
-      //cases.post();
-      $scope.submitted = false;
-      $scope.$state.go(nextStep);
-    }
+  var factory = {};
+  factory.start_interview = function() {
+    the_cases.unshift({
+      id: next_id++,
+      name: '',
+      username: '',
+      email: '',
+      phone_area: '',
+      phone_exchange: '',
+      phone_subscriber: '',
+      beneficiary_type: '',
+      beneficiary_name: '',
+      alive: '',
+      risk_taker: '',
+      risk_kind: ''
+    });
   };
+  factory.current = function() {
+    return the_cases;
+  };
+  factory.all = function () {
+    return cases;
+  };
+  return factory;
 }]);
 
 
-angular.module('rdx.cases', [
+angular.module('rdx.interview', [
   'ui.router'
 ])
 
@@ -62,7 +109,25 @@ angular.module('rdx.cases', [
         abstract: true,
         url: '/interview',
         templateUrl: 'interview/interview.html',
-        controller: 'interview'
+        resolve: {
+          cases: ['cases',
+            function(cases) {
+              return cases.all();
+            }
+          ]
+        },
+        controller: ['$scope', 'cases', function($scope, cases) {
+          $scope.interview = cases[0];
+
+          $scope.save = function(isValid, nextStep) {
+            $scope.submitted = true;
+
+            if (isValid) {
+              $scope.submitted = false;
+              $scope.$state.go(nextStep);
+            }
+          };
+        }]
       })
 
       .state('interview.step1', {
@@ -72,12 +137,23 @@ angular.module('rdx.cases', [
 
       .state('interview.step2', {
         url: '',
-        templateUrl: 'interview/step2.html'
+        templateUrl: 'interview/step2.html',
+        controller: ['$scope', function($scope) {
+          $scope.types = [
+            {name: 'Person', value: 'person'},
+            {name: 'Trust', value: 'trust'}
+          ];
+        }]
+      })
+
+      .state('interview.step3', {
+        url: '',
+        templateUrl: 'interview/step3.html'
       })
 
       .state('interview.thankyou', {
         url: '',
-        template: '<div class="jumbotron text-center"><h1>Thank You!</h1><p>Your loved ones will thank you</p></div>'
+        template: '<div class="jumbotron text-center"><h1>Thank You!</h1><p>Your loved ones will thank you too.</p></div>'
       });
 }]);
 

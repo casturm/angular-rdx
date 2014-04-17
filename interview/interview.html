@@ -1,21 +1,28 @@
 <ul class="breadcrumb">
   <li ng-class="{ 'active' : $state.current.name == 'interview.step1' }">
     <span ng-if="state.current.name != 'interview.step1'">
-      <a ui-sref="interview.step1">About You</a>
-      <span class="glyphicon glyphicon-chevron-right"></span>
+      <a ui-sref="interview.step1">Who Are You</a>
     </span>
     <span ng-if="state.current.name == 'interview.step1'">
-      About You
+      Who Are You
     </span>
   </li>
 
   <li ng-class="{ 'active' : $state.current.name == 'interview.step2' }">
     <span ng-if="state.current.name != 'interview.step2'">
       <a ui-sref="interview.step2">About Them</a>
-      <span class="glyphicon glyphicon-chevron-right"></span>
     </span>
-    <span ng-if="state.current.name == 'interview.step1'">
-      About You
+    <span ng-if="state.current.name == 'interview.step2'">
+      About Them
+    </span>
+  </li>
+
+  <li ng-class="{ 'active' : $state.current.name == 'interview.step3' }">
+    <span ng-if="state.current.name != 'interview.step3'">
+      <a ui-sref="interview.step3">More About You</a>
+    </span>
+    <span ng-if="state.current.name == 'interview.step3'">
+      More About You
     </span>
   </li>
 

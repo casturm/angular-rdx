@@ -1,13 +1,15 @@
 <div class="col-sm-8 col-sm-offset-2">
 
-  <div class="page-header"><h1>Who Gets My Stuff</h1></div>
+  <div class="page-header"><h1>Who Gets Your Stuff</h1></div>
 
-  <form name="beneForm" ng-submit="save(beneForm.$valid, 'interview.thankyou')" novalidate>
+  <form name="form" ng-submit="save(form.$valid, 'interview.step3')" novalidate>
 
-      <div class="form-group" ng-class="{ 'has-error' : beneForm.beneficiary_type.$invalid }">
+      <div class="form-group" ng-class="{ 'has-error' : form.beneficiary_type.$invalid }">
           <label class="control-label">Beneficiary</label>
-          <input type="text" name="name" class="form-control" ng-model="beneForm.beneficiary_type" required>
-          <p ng-show="beneForm.beneficiary_type.$invalid" class="help-block">Beneficiary Type is required</p>
+          <select ng-model="interview.beneficiary_type" ng-options="t.name for t in types">
+            <option value="">-- choose Beneficiary --</option>
+          </select>
+          <p ng-show="form.beneficiary_type.$invalid" class="help-block">Beneficiary Type is required</p>
       </div>
 
       <button type="submit" class="btn btn-primary">Save</button>

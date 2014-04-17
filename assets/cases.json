@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "id": 1,
+      "name": "bob",
+      "username": "bobby",
+      "email": "bob@foobar.com",
+      "phone_area": "303",
+      "phone_exchange": "443",
+      "phone_subscriber": "0971",
+      "beneficiary_type": "Person"
+    }
+  ]
+}
