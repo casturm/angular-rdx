@@ -5,10 +5,12 @@
       "name": "bob",
       "username": "bobby",
       "email": "bob@foobar.com",
-      "phone_area": "303",
-      "phone_exchange": "443",
-      "phone_subscriber": "0971",
-      "beneficiary_type": "trust"
+      "phone_number": "3034430971",
+      "beneficiary_type": "trust",
+      "trust_name": "trusty trust fund",
+      "risk_taker": "Yes",
+      "risk_kind": "Sky Diviing",
+      "alive": "Yes"
     }
   ]
 }

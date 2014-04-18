@@ -48,12 +48,12 @@ angular.module('rdx', [
     })
 
     .state('thankyou', {
-      url: '',
+      url: '/thankyou',
       template: '<div class="jumbotron text-center"><h1>Thank You!</h1><p>Your loved ones will thank you too.</p></div>'
     })
 
     .state('nothanks', {
-      url: '',
+      url: 'thanksbutnothanks',
       template: '<div class="jumbotron text-center"><h1>You Are Dead!</h1><p>Sorry, but we can\'t insure you at this time.</p></div>'
     })
 

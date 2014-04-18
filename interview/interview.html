@@ -1,13 +1,19 @@
 <ul class="breadcrumb">
   <li ng-repeat="step in breadcrumbs"  ng-class="{ 'active' : $state.current.name == '{{step.name}}' }">
     <span ng-if="$state.current.name != step.name">
-      <a ui-sref="{{step.name}}">{{step.displayName}}</a>
+      <a ui-sref="{{step.name}}">{{step.breadcrumb}}</a>
     </span>
     <span ng-if="$state.current.name == step.name">
-      {{step.displayName}}
+      {{step.breadcrumb}}
     </span>
   </li>
 </ul>
 
-<div ui-view>
+<div class="col-sm-8 col-sm-offset-2">
+
+  <div class="page-header"><h1>{{pageHeader()}}</h1></div>
+
+  <div ui-view>
+  </div>
+
 </div>

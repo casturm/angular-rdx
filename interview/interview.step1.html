@@ -1,46 +1,40 @@
-<div class="col-sm-8 col-sm-offset-2">
+<form name="form" ng-submit="save(form.$valid, 'interview.step2')" novalidate>
 
-  <div class="page-header"><h1>Who Are You?</h1></div>
+  <div class="form-group" ng-class="{ 'has-error' : submitted && form.name.$invalid }">
+    <label class="control-label">Name</label>
+    <input type="text" name="name" class="form-control" ng-model="interview.name" required>
+    <p ng-show="submitted && form.name.$error.required" class="help-block">You name is required.</p>
+  </div>
 
-  <form name="form" ng-submit="save(form.$valid, 'interview.step2')" novalidate>
+  <div class="form-group" ng-class="{ 'has-error' : submitted && form.username.$invalid }">
+    <label class="control-label">Username</label>
+    <input type="text" name="username" class="form-control" ng-model="interview.username" ng-minlength="3" ng-maxlength="8">
+    <p ng-show="submitted && form.username.$error.minlength" class="help-block">Username is too short.</p>
+    <p ng-show="submitted && form.username.$error.maxlength" class="help-block">Username is too long.</p>
+  </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : submitted && form.name.$invalid }">
-      <label class="control-label">Name</label>
-      <input type="text" name="name" class="form-control" ng-model="interview.name" required>
-      <p ng-show="submitted && form.name.$error.required" class="help-block">You name is required.</p>
-    </div>
+  <div class="form-group" ng-class="{ 'has-error' : submitted && form.email.$invalid }">
+    <label class="control-label">Email</label>
+    <input type="email" name="email" class="form-control" ng-model="interview.email">
+    <p ng-show="submitted && form.email.$invalid" class="help-block">Enter a valid email.</p>
+  </div>
 
-    <div class="form-group" ng-class="{ 'has-error' : submitted && form.username.$invalid }">
-      <label class="control-label">Username</label>
-      <input type="text" name="username" class="form-control" ng-model="interview.username" ng-minlength="3" ng-maxlength="8">
-      <p ng-show="submitted && form.username.$error.minlength" class="help-block">Username is too short.</p>
-      <p ng-show="submitted && form.username.$error.maxlength" class="help-block">Username is too long.</p>
-    </div>
-
-    <div class="form-group" ng-class="{ 'has-error' : submitted && form.email.$invalid }">
-      <label class="control-label">Email</label>
-      <input type="email" name="email" class="form-control" ng-model="interview.email">
-      <p ng-show="submitted && form.email.$invalid" class="help-block">Enter a valid email.</p>
-    </div>
-
-    <div class="form-group" ng-class="{ 'has-error' : submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid) }">
-      <label class="control-label">Phone</label>
-      <div class="form-inline">
-        <div class="form-group">
-          <input type="text" name="area" class="form-control" ng-model="interview.phone_area" size="3" maxLength="3" ng-pattern="/\d\d\d/" ng-minlength="3">
-        </div>
-        <div class="form-group">
-          <input type="text" name="exchange" class="form-control" ng-model="interview.phone_exchange" size="3" maxLength="3" ng-pattern="/\d\d\d/" ng-minlength="3">
-        </div>
-        <div class="form-group">
-          <input type="text" name="subscriber" class="form-control" ng-model="interview.phone_subscriber" size="4" maxLength="4" ng-pattern="/\d\d\d\d/" ng-minlength="4">
-        </div>
+  <div class="form-group" ng-class="{ 'has-error' : submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid) }">
+    <label class="control-label">Phone</label>
+    <div class="form-inline">
+      <div class="form-group">
+        <input type="text" name="area" class="form-control" ng-model="phone_parts.area" size="3" maxLength="3" ng-pattern="/[2-9]{1}\d{2}/" ng-minlength="3" ng-required="phoneNumberParts()">
       </div>
-      <p ng-show="submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid)" class="help-block">Enter a valid phone number.</p>
+      <div class="form-group">
+        <input type="text" name="exchange" class="form-control" ng-model="phone_parts.exchange" size="3" maxLength="3" ng-pattern="/\d{3}/" ng-minlength="3" ng-required="phoneNumberParts()">
+      </div>
+      <div class="form-group">
+        <input type="text" name="subscriber" class="form-control" ng-model="phone_parts.subscriber" size="4" maxLength="4" ng-pattern="/\d{4}/" ng-minlength="4" ng-required="phoneNumberParts()">
+      </div>
     </div>
+    <p ng-show="submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid)" class="help-block">Enter a valid phone number.</p>
+  </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-
-</div>
+  <button type="submit" class="btn btn-primary">Next</button>
+</form>
 
