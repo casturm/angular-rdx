@@ -1,0 +1,15 @@
+body {
+  padding-top:30px;
+}
+.form-inline .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 75px;
+  color: #777;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}

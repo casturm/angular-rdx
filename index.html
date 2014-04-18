@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="rdx">
 <head>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <style>
-      body 	{ padding-top:30px; }
-      .form-inline .form-group {
-        margin-left: 0;
-        margin-right: 0;
-      }
-   </style>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 
-    <script src="http://code.angularjs.org/1.2.9/angular.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    <script src="app.js"></script>
+  <script src="http://code.angularjs.org/1.2.9/angular.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+  <script src="app.js"></script>
+  <script src="cases/cases-service.js"></script>
+  <script src="interview/interview.js"></script>
 </head>
 
 <body>
@@ -22,9 +18,9 @@
       <a class="navbar-brand" ui-sref="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li ng-class="{active: $state.current.name == 'home' }"><a ui-sref="home">Home</a></li>
-      <li ng-class="{active: $state.current.name == 'about' }"><a ui-sref="about">About</a></li>
+      <li ng-class="{active: $state.current.name == 'home' }"><a ui-sref="home">AngularRDX</a></li>
       <li ng-class="{active: $state.current.name == 'cases' }"><a ui-sref="cases">Cases</a></li>
+      <li ng-class="{active: $state.current.name == 'about' }"><a ui-sref="about">About</a></li>
     </ul>
   </nav>
 
@@ -35,6 +31,11 @@
 
   </div>
 
-  <div class="footer"></div>
+  <div class="footer">
+    <div class="container">
+      <p>It's all about Life Insurance ...</p>
+      <small>and cool technology</small>
+    </div>
+  </div>
 </body>
 </html>

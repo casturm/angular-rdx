@@ -1,35 +1,12 @@
 <ul class="breadcrumb">
-  <li ng-class="{ 'active' : $state.current.name == 'interview.step1' }">
-    <span ng-if="state.current.name != 'interview.step1'">
-      <a ui-sref="interview.step1">Who Are You</a>
+  <li ng-repeat="step in breadcrumbs"  ng-class="{ 'active' : $state.current.name == '{{step.name}}' }">
+    <span ng-if="$state.current.name != step.name">
+      <a ui-sref="{{step.name}}">{{step.displayName}}</a>
     </span>
-    <span ng-if="state.current.name == 'interview.step1'">
-      Who Are You
-    </span>
-  </li>
-
-  <li ng-class="{ 'active' : $state.current.name == 'interview.step2' }">
-    <span ng-if="state.current.name != 'interview.step2'">
-      <a ui-sref="interview.step2">About Them</a>
-    </span>
-    <span ng-if="state.current.name == 'interview.step2'">
-      About Them
+    <span ng-if="$state.current.name == step.name">
+      {{step.displayName}}
     </span>
   </li>
-
-  <li ng-class="{ 'active' : $state.current.name == 'interview.step3' }">
-    <span ng-if="state.current.name != 'interview.step3'">
-      <a ui-sref="interview.step3">More About You</a>
-    </span>
-    <span ng-if="state.current.name == 'interview.step3'">
-      More About You
-    </span>
-  </li>
-
-  <li ng-class="{ 'active' : $state.current.name == 'interview.thankyou' }">
-      Thank You
-  </li>
-
 </ul>
 
 <div ui-view>

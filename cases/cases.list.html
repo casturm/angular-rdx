@@ -1,0 +1,33 @@
+<h2>All Cases</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Phone</th>
+        <th>Bene Type</th>
+        <th>Bene Name</th>
+        <th>Trust Name</th>
+        <th>Alive</th>
+        <th>Risky?</th>
+        <th>Risk Kind</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="c in cases">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.username}}</td>
+        <td>{{c.phone}}</td>
+        <td>{{c.beneficiary_type}}</td>
+        <td>{{c.beneficiary_name}}</td>
+        <td>{{c.trust_name}}</td>
+        <td>{{c.alive}}</td>
+        <td>{{c.risk_taker}}</td>
+        <td>{{c.risk_kind}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
