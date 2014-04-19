@@ -11,9 +11,6 @@ Spec tests written using Jasmine / Karma
 To run tests
 -----------------------
 
- * Install jasmine and karma
-
-
       karma start config/karma.conf.js --log-level debug
 
 To run app
