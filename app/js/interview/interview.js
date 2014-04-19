@@ -44,17 +44,7 @@ angular.module('rdx.interview', [
         templateUrl: 'interview/interview.step4.html',
         breadcrumb: 'More About You',
         pageHeader: "Still More About You",
-        controller: ['$scope', function($scope) {
-
-          $scope.finish = function(isValid) {
-            if ($scope.interview.alive == 'No') {
-              $scope.save(isValid, 'nothanks');
-            }
-            else {
-              $scope.save(isValid, 'thankyou');
-            }
-          };
-        }]
+        controller: 'interview-step4-controller'
       });
 }]);
 

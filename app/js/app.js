@@ -1,5 +1,7 @@
 angular.module('rdx', [
   'rdx.cases.services',
+  'rdx.cases.controllers',
+  'rdx.home.controllers',
   'rdx.interview.controllers',
   'rdx.interview.step.controllers',
   'rdx.interview',
@@ -28,14 +30,7 @@ angular.module('rdx', [
       resolve: {
         cases: 'cases'
       },
-      controller: ['$scope', 'cases', function($scope, cases) {
-        cases.all();
-
-        $scope.start = function() {
-          cases.start_interview();
-          $scope.$state.go('interview.step1');
-        }
-      }]
+      controller: 'home-controller'
     })
 
     .state('cases', {
@@ -44,9 +39,7 @@ angular.module('rdx', [
       resolve: {
         cases: 'cases'
       },
-      controller: ['$scope', 'cases', function($scope, cases) {
-        $scope.cases = cases.cases();
-      }]
+      controller: 'cases-controller'
     })
 
     .state('thankyou', {

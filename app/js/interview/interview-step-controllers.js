@@ -33,4 +33,16 @@ angular.module('rdx.interview.step.controllers', [
       $scope.interview.beneficiary_type = $scope.types[index];
     }
   }
+}])
+
+.controller('interview-step4-controller', ['$scope', function($scope) {
+
+  $scope.finish = function(isValid) {
+    if ($scope.interview.alive == 'No') {
+      $scope.save(isValid, 'nothanks');
+    }
+    else {
+      $scope.save(isValid, 'thankyou');
+    }
+  };
 }]);
