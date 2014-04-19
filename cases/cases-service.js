@@ -1,4 +1,4 @@
-angular.module('rdx.cases.service', [
+angular.module('rdx.cases.services', [
 
 ])
 

@@ -1,5 +1,5 @@
 angular.module('rdx', [
-  'rdx.cases.service',
+  'rdx.cases.services',
   'rdx.interview',
   'ui.router'
 ])
