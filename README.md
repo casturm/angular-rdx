@@ -1,7 +1,8 @@
 AngularRDX
 ==========
 
-Example App based on angular-ui-router http://https://github.com/angular-ui/ui-router
+Example App based on angular-ui-router
+ * https://github.com/angular-ui/ui-router
 
 Spec tests written using Jasmine / Karma
  * http://jasmine.github.io/2.0/introduction.html
@@ -9,7 +10,8 @@ Spec tests written using Jasmine / Karma
 
 To run tests
 -----------------------
-Install jasmine and karma.
+
+ * Install jasmine and karma
 
       karma start config/karma.conf.js --log-level debug
 
@@ -18,6 +20,6 @@ To run app
 
       node scripts/server.js
 
-Open http://localhost:8000/
+ * Go to: http://localhost:8000
 
 
