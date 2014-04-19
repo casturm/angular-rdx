@@ -1,7 +1,7 @@
 describe('rdx.interview.controllers', function() {
 
   describe('interview-controller', function() {
-    var scope, ctrl, cases;
+    var scope, cases;
 
     beforeEach(module('rdx.interview.controllers'));
     beforeEach(module('ui.router'));
@@ -26,7 +26,7 @@ describe('rdx.interview.controllers', function() {
     beforeEach(inject(function($rootScope, $state, $controller) {
       scope = $rootScope.$new();
       scope.$state = $state;
-      ctrl = $controller('interview-controller', {$scope: scope, cases: cases});
+      $controller('interview-controller', {$scope: scope, cases: cases});
     }));
 
     it('should assign breadcrumbs with interview step states', function() {

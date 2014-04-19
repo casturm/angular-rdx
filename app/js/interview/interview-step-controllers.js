@@ -19,5 +19,18 @@ angular.module('rdx.interview.step.controllers', [
     $scope.interview.phone_number = phone_number;
     return false;
   };
-}]);
+}])
 
+.controller('interview-step2-controller', ['$scope', function($scope) {
+
+  $scope.types = [
+    {name: 'Person', value: 'person'},
+    {name: 'Trust', value: 'trust'}
+  ];
+
+  for (index = 0; index < $scope.types.length; ++index) {
+    if ($scope.interview.beneficiary_type == $scope.types[index].value) {
+      $scope.interview.beneficiary_type = $scope.types[index];
+    }
+  }
+}]);

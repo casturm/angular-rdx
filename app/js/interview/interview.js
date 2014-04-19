@@ -29,19 +29,7 @@ angular.module('rdx.interview', [
         templateUrl: 'interview/interview.step2.html',
         breadcrumb: 'Who Wins?',
         pageHeader: "Who Gets Your Stuff?",
-        controller: ['$scope', function($scope) {
-
-          $scope.types = [
-            {name: 'Person', value: 'person'},
-            {name: 'Trust', value: 'trust'}
-          ];
-
-          for (index = 0; index < $scope.types.length; ++index) {
-            if ($scope.interview.beneficiary_type == $scope.types[index].value) {
-              $scope.interview.beneficiary_type = $scope.types[index];
-            }
-          }
-        }]
+        controller: 'interview-step2-controller'
       })
 
       .state('interview.step3', {

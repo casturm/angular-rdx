@@ -1,7 +1,7 @@
 describe('rdx.interview.step.controllers', function() {
 
   describe('interview-step1-controller', function() {
-    var scope, ctrl;
+    var scope;
 
     beforeEach(module('rdx.interview.step.controllers'));
     beforeEach(module('ui.router'));
@@ -17,7 +17,7 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
-      ctrl = $controller('interview-step1-controller', {$scope: scope});
+      $controller('interview-step1-controller', {$scope: scope});
     }));
 
     it('should assign phone parts', function() {
