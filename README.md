@@ -21,6 +21,8 @@ To run e2e tests
 
       webdriver-manager start
 
+      protractor config/protractor.conf.js
+
 To run app
 -----------------------
 
