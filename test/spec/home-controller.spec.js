@@ -6,14 +6,6 @@ describe('rdx.home.controllers', function() {
     beforeEach(module('rdx.home.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function(){
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(module(function ($provide) {
       cases = {
         all: function() {

@@ -6,14 +6,6 @@ describe('rdx.interview.controllers', function() {
     beforeEach(module('rdx.interview.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function(){
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(module(function ($provide) {
       cases = {
         current: function() {
@@ -34,7 +26,7 @@ describe('rdx.interview.controllers', function() {
     });
 
     it('should assign current interview', function() {
-      expect(scope.interview).toEqualData({id: 3, name: 'tester'});
+      expect(scope.interview).toEqual({id: 3, name: 'tester'});
     });
 
     it('should define a save method', function() {

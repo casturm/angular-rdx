@@ -6,14 +6,6 @@ describe('rdx.cases.controllers', function() {
     beforeEach(module('rdx.cases.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function(){
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(module(function ($provide) {
       cases = {
         cases: function() {
@@ -30,7 +22,7 @@ describe('rdx.cases.controllers', function() {
     }));
 
     it('should get all the cases and put them on the scope', function() {
-      expect(scope.cases).toEqualData({});
+      expect(scope.cases).toEqual({});
     });
   });
 });

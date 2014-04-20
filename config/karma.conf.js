@@ -16,6 +16,10 @@ module.exports = function(config) {
       'test/**/*.js'
     ],
 
+    exclude: [
+      'test/e2e/**'
+    ],
+
     frameworks: ['jasmine'],
 
     browsers : ['Chrome'],

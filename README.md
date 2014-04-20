@@ -8,15 +8,22 @@ Spec tests written using Jasmine / Karma
  * http://jasmine.github.io/2.0/introduction.html
  * http://karma-runner.github.io/0.12/index.html
 
+End to End tests written using protractor
+ * https://github.com/angular/protractor
+
 To run tests
 -----------------------
 
       karma start config/karma.conf.js --log-level debug
+
+To run e2e tests
+-----------------------
+
+      webdriver-manager start
 
 To run app
 -----------------------
 
       node scripts/server.js
 
- * http://localhost:8000/index.html
 

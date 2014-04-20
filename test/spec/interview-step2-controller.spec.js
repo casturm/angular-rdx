@@ -6,14 +6,6 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(module('rdx.interview.step.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function() {
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
@@ -21,7 +13,7 @@ describe('rdx.interview.step.controllers', function() {
     }));
 
     it('should assign types', function() {
-      expect(scope.types).toEqualData([
+      expect(scope.types).toEqual([
           {name: 'Person', value: 'person'},
           {name: 'Trust', value: 'trust'}
         ]);
@@ -39,7 +31,7 @@ describe('rdx.interview.step.controllers', function() {
       }));
 
       it('should assign beneficiary_type when a matching value is found is types', function() {
-        expect(scope.interview.beneficiary_type).toEqualData({name: 'Trust', value: 'trust'});
+        expect(scope.interview.beneficiary_type).toEqual({name: 'Trust', value: 'trust'});
       });
     });
   });

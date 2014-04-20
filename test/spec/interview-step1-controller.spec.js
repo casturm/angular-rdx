@@ -6,14 +6,6 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(module('rdx.interview.step.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function(){
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
@@ -21,7 +13,7 @@ describe('rdx.interview.step.controllers', function() {
     }));
 
     it('should assign phone parts', function() {
-      expect(scope.phone_parts).toEqualData({});
+      expect(scope.phone_parts).toEqual({});
     });
 
     it('should assign phoneNumberParts method', function() {

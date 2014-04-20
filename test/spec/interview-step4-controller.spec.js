@@ -6,14 +6,6 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(module('rdx.interview.step.controllers'));
     beforeEach(module('ui.router'));
 
-    beforeEach(function() {
-      this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
-
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
