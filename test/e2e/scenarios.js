@@ -16,6 +16,23 @@ describe('AngularRDX', function() {
     });
   });
 
+  describe('cases', function() {
+
+    beforeEach(function() {
+      browser.get('http://localhost:8000/#/cases');
+    });
+
+    it('should provide me with a list of cases', function() {
+      var names = element.all(by.repeater('c in cases').column('{{c.name}}'));
+      function getNames() {
+        return names.map(function(e) {
+          return e.getText();
+        });
+      }
+      expect(getNames()).toEqual(['bob']);
+    });
+  });
+
   describe('interview', function() {
 
     it('should walk me through the interview steps and take me to the thankyou page', function() {
