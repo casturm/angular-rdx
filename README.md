@@ -26,6 +26,6 @@ To run e2e tests
 To run app
 -----------------------
 
-      node scripts/server.js
+      npm start
 
 
