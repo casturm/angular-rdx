@@ -28,7 +28,7 @@ angular.module('rdx', [
       url: '/',
       templateUrl: 'partials/partial-home.html',
       resolve: {
-        cases: 'cases'
+        Cases: 'Cases'
       },
       controller: 'home-controller'
     })
@@ -37,7 +37,7 @@ angular.module('rdx', [
       url: '/cases',
       templateUrl: 'cases/cases.list.html',
       resolve: {
-        cases: 'cases'
+        Cases: 'Cases'
       },
       controller: 'cases-controller'
     })

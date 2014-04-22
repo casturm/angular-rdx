@@ -2,7 +2,7 @@ angular.module('rdx.cases.services', [
 
 ])
 
-.factory('cases', ['$http', function ($http) {
+.factory('Cases', ['$http', function ($http) {
   var path = 'assets/cases.json';
   var cases = [];
   var next_id = 2;

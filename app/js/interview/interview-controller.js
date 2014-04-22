@@ -2,7 +2,7 @@ angular.module('rdx.interview.controllers', [
 
 ])
 
-.controller('interview-controller', ['$scope', 'cases', function($scope, cases) {
+.controller('interview-controller', ['$scope', 'Cases', function($scope, Cases) {
   $scope.breadcrumbs = [
     $scope.$state.get('interview.step1'),
     $scope.$state.get('interview.step2'),
@@ -10,13 +10,13 @@ angular.module('rdx.interview.controllers', [
     $scope.$state.get('interview.step4')
   ];
 
-  $scope.interview = cases.current();
+  $scope.interview = Cases.current();
 
   $scope.save = function(isValid, nextStep) {
     $scope.submitted = true;
 
     if (isValid) {
-      cases.save_current();
+      Cases.save_current();
       $scope.submitted = false;
       $scope.$state.go(nextStep);
     }

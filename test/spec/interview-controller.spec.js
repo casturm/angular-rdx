@@ -1,24 +1,24 @@
 describe('rdx.interview.controllers', function() {
 
   describe('interview-controller', function() {
-    var scope, cases;
+    var scope, Cases;
 
     beforeEach(module('rdx.interview.controllers'));
     beforeEach(module('ui.router'));
 
     beforeEach(module(function ($provide) {
-      cases = {
+      Cases = {
         current: function() {
           return {id: 3, name: 'tester'};
         }
       };
-      $provide.value('cases', cases);
+      $provide.value('Cases', Cases);
     }));
 
     beforeEach(inject(function($rootScope, $state, $controller) {
       scope = $rootScope.$new();
       scope.$state = $state;
-      $controller('interview-controller', {$scope: scope, cases: cases});
+      $controller('interview-controller', {$scope: scope, Cases: Cases});
     }));
 
     it('should assign breadcrumbs with interview step states', function() {

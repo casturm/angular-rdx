@@ -11,7 +11,7 @@ angular.module('rdx.interview', [
         url: '/interview',
         templateUrl: 'interview/interview.html',
         resolve: {
-          cases: 'cases'
+          Cases: 'Cases'
         },
         controller: 'interview-controller'
       })
