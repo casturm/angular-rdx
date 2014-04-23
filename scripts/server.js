@@ -10,5 +10,5 @@ var port = 8000,
 app.use(favicon());
 app.use(logger('dev'));
 app.use('/', express.static(__dirname + '/../app'));
-app.listen(port);
+app.listen(process.env.PORT || port);
 console.log('Now serving http://localhost:'+port+'/index.html');
