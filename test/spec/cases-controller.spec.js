@@ -1,6 +1,6 @@
 describe('rdx.cases.controllers', function() {
 
-  describe('cases-controller', function() {
+  describe('CasesController', function() {
     var scope, cases;
 
     beforeEach(module('rdx.cases.controllers'));
@@ -18,7 +18,7 @@ describe('rdx.cases.controllers', function() {
     beforeEach(inject(function($rootScope, $state, $controller) {
       scope = $rootScope.$new();
       scope.$state = $state;
-      $controller('cases-controller', {$scope: scope, Cases: Cases});
+      $controller('CasesController', {$scope: scope, Cases: Cases});
     }));
 
     it('should get all the cases and put them on the scope', function() {

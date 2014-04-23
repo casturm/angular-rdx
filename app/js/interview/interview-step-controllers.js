@@ -2,7 +2,7 @@ angular.module('rdx.interview.step.controllers', [
 
 ])
 
-.controller('interview-step1-controller', ['$scope', function($scope) {
+.controller('InterviewStep1Controller', ['$scope', function($scope) {
 
   $scope.phone_parts = {};
   if ($scope.interview.phone_number) {
@@ -21,7 +21,7 @@ angular.module('rdx.interview.step.controllers', [
   };
 }])
 
-.controller('interview-step2-controller', ['$scope', function($scope) {
+.controller('InterviewStep2Controller', ['$scope', function($scope) {
 
   $scope.types = [
     {name: 'Person', value: 'person'},
@@ -35,7 +35,7 @@ angular.module('rdx.interview.step.controllers', [
   }
 }])
 
-.controller('interview-step4-controller', ['$scope', function($scope) {
+.controller('InterviewStep4Controller', ['$scope', function($scope) {
 
   $scope.finish = function(isValid) {
     if ($scope.interview.alive == 'No') {

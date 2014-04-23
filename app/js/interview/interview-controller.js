@@ -2,7 +2,7 @@ angular.module('rdx.interview.controllers', [
 
 ])
 
-.controller('interview-controller', ['$scope', 'Cases', function($scope, Cases) {
+.controller('InterviewController', ['$scope', 'Cases', function($scope, Cases) {
   $scope.breadcrumbs = [
     $scope.$state.get('interview.step1'),
     $scope.$state.get('interview.step2'),

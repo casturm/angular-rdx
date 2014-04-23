@@ -2,7 +2,7 @@ angular.module('rdx.home.controllers', [
 
 ])
 
-.controller('home-controller', ['$scope', 'Cases', function($scope, Cases) {
+.controller('HomeController', ['$scope', 'Cases', function($scope, Cases) {
   Cases.all();
 
   $scope.start = function() {

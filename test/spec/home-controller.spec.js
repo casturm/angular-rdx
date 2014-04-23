@@ -1,6 +1,6 @@
 describe('rdx.home.controllers', function() {
 
-  describe('home-controller', function() {
+  describe('HomeController', function() {
     var scope, Cases;
 
     beforeEach(module('rdx.home.controllers'));
@@ -17,7 +17,7 @@ describe('rdx.home.controllers', function() {
     beforeEach(inject(function($rootScope, $state, $controller) {
       scope = $rootScope.$new();
       scope.$state = $state;
-      $controller('home-controller', {$scope: scope, Cases: Cases});
+      $controller('HomeController', {$scope: scope, Cases: Cases});
     }));
 
     it('should define a start method', function() {

@@ -1,6 +1,6 @@
 describe('rdx.interview.step.controllers', function() {
 
-  describe('interview-step4-controller', function() {
+  describe('InterviewStep4Controller', function() {
     var scope;
 
     beforeEach(module('rdx.interview.step.controllers'));
@@ -9,7 +9,7 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
-      $controller('interview-step4-controller', {$scope: scope});
+      $controller('InterviewStep4Controller', {$scope: scope});
     }));
 
     it('should assign finish method', function() {

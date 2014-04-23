@@ -1,6 +1,6 @@
 describe('rdx.interview.step.controllers', function() {
 
-  describe('interview-step2-controller', function() {
+  describe('InterviewStep2Controller', function() {
     var scope;
 
     beforeEach(module('rdx.interview.step.controllers'));
@@ -9,7 +9,7 @@ describe('rdx.interview.step.controllers', function() {
     beforeEach(inject(function($rootScope, $controller) {
       scope = $rootScope.$new();
       scope.interview = {};
-      $controller('interview-step2-controller', {$scope: scope});
+      $controller('InterviewStep2Controller', {$scope: scope});
     }));
 
     it('should assign types', function() {
@@ -23,11 +23,11 @@ describe('rdx.interview.step.controllers', function() {
       expect(scope.interview.beneficiary_type).toBeUndefined();
     });
 
-    describe('interview-step2-controller with existing interview.beneficiary_type', function() {
+    describe('with existing interview.beneficiary_type', function() {
 
       beforeEach(inject(function($controller) {
         scope.interview.beneficiary_type = 'trust';
-        $controller('interview-step2-controller', {$scope: scope});
+        $controller('InterviewStep2Controller', {$scope: scope});
       }));
 
       it('should assign beneficiary_type when a matching value is found is types', function() {

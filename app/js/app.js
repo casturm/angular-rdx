@@ -30,7 +30,7 @@ angular.module('rdx', [
       resolve: {
         Cases: 'Cases'
       },
-      controller: 'home-controller'
+      controller: 'HomeController'
     })
 
     .state('cases', {
@@ -39,7 +39,7 @@ angular.module('rdx', [
       resolve: {
         Cases: 'Cases'
       },
-      controller: 'cases-controller'
+      controller: 'CasesController'
     })
 
     .state('thankyou', {
