@@ -3,11 +3,19 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "start": "node ./scripts/server"
+        "start": "node ./scripts/server",
+        "test": "karma start config/karma.conf.js --log-level debug --single-run"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/casturm/angular-rdx.git"
     },
     "dependencies": {
         "express": "~4.0.0",
         "static-favicon": "~1.0.0",
         "morgan": "~1.0.0"
+    },
+    "engines": {
+      "node": "0.10.x"
     }
 }
