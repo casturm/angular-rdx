@@ -20,6 +20,9 @@ angular.module('rdx.cases.services', [
   };
   factory.save_current = function() {
     console.log("save current case: " + angular.toJson(cases[0]));
+    $http.post('cases', angular.toJson(cases[0])).then(function (resp) {
+      console.log('post response: ' + angular.toJson(resp.data));
+    });
   };
   factory.cases = function() {
     return cases;
