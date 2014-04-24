@@ -6,7 +6,7 @@ describe('rdx.cases.CasesController', function() {
   beforeEach(module(function ($provide) {
     Cases = {
       cases: function() {
-        return {};
+        return [{id:'1',name:'bob'},{id:'2',name:'mary'}];
       }
     };
     $provide.value('Cases', Cases);
@@ -17,7 +17,7 @@ describe('rdx.cases.CasesController', function() {
     $controller('CasesController', {$scope: scope, Cases: Cases});
   }));
 
-  it('should get all the cases and put them on the scope', function() {
-    expect(scope.cases).toEqual({});
+  it('should get all the cases an put them on the scope', function() {
+    expect(scope.cases).toEqual([{id:'1',name:'bob'},{id:'2',name:'mary'}]);
   });
 });
