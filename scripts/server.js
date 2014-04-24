@@ -13,7 +13,8 @@ var port = process.env.PORT || 8000,
 //logger.token('type', function(req, res){ return req.headers['content-type']; })
 //app.use(logger(':remote-addr - - [:date] ":method :url HTTP/:http-version" :type :status :res[content-length] ":referrer" ":user-agent"'));
 app.use(logger('dev'));
-app.use(favicon(express.static(__dirname + '/../app/assets/favicon.ico')));
+//app.use(favicon(express.static(__dirname + '/../app/assets/favicon.ico')));
+app.use(favicon());
 app.use('/', express.static(__dirname + '/../bower_components'));
 app.use('/', express.static(__dirname + '/../app'));
 
