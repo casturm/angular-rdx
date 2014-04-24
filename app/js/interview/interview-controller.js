@@ -1,6 +1,4 @@
-angular.module('rdx.interview.controllers', [
-
-])
+angular.module('rdx.interview')
 
 .controller('InterviewController', ['$scope', 'Cases', function($scope, Cases) {
   $scope.breadcrumbs = [

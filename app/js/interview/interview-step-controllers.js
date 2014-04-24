@@ -1,23 +1,17 @@
-angular.module('rdx.interview.step.controllers', [
-
-])
+angular.module('rdx.interview')
 
 .controller('InterviewStep1Controller', ['$scope', function($scope) {
 
   $scope.phone_parts = {};
   if ($scope.interview.phone_number) {
-    $scope.phone_parts['area'] = $scope.interview.phone_number.substr(0,3);
-    $scope.phone_parts['exchange'] = $scope.interview.phone_number.substr(4,3);
-    $scope.phone_parts['subscriber'] = $scope.interview.phone_number.substr(5,4);
+    $scope.phone_parts.area = $scope.interview.phone_number.substr(0,3);
+    $scope.phone_parts.exchange = $scope.interview.phone_number.substr(3,3);
+    $scope.phone_parts.subscriber = $scope.interview.phone_number.substr(6,4);
   }
 
   $scope.phoneNumberParts = function() {
-    var phone_number = ($scope.phone_parts.area || '') + ($scope.phone_parts.exchange || '') + ($scope.phone_parts.subscriber || '');
-    if (phone_number.length > 0 && phone_number.length != 10) {
-      return true;
-    }
-    $scope.interview.phone_number = phone_number;
-    return false;
+    $scope.interview.phone_number = ($scope.phone_parts.area || '') + ($scope.phone_parts.exchange || '') + ($scope.phone_parts.subscriber || '');
+    return $scope.interview.phone_number.length > 0 && $scope.interview.phone_number.length != 10;
   };
 }])
 
@@ -28,11 +22,11 @@ angular.module('rdx.interview.step.controllers', [
     {name: 'Trust', value: 'trust'}
   ];
 
-  for (index = 0; index < $scope.types.length; ++index) {
-    if ($scope.interview.beneficiary_type == $scope.types[index].value) {
-      $scope.interview.beneficiary_type = $scope.types[index];
+  angular.forEach($scope.types, function(type) {
+    if ($scope.interview.beneficiary_type == type.value) {
+      $scope.interview.beneficiary_type = type;
     }
-  }
+  });
 }])
 
 .controller('InterviewStep4Controller', ['$scope', function($scope) {

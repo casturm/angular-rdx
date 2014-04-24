@@ -1,6 +1,4 @@
-angular.module('rdx.cases.services', [
-
-])
+angular.module('rdx.cases')
 
 .factory('Cases', ['$http', function ($http) {
   var path = 'assets/cases.json';

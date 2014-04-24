@@ -12,7 +12,10 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'app/js/**/*.js',
+      'app/js/app.js',
+      'app/js/cases/*.js',
+      'app/js/home/*.js',
+      'app/js/interview/*.js',
       'test/**/*.js'
     ],
 

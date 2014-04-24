@@ -1,27 +1,22 @@
-describe('rdx.home.controllers', function() {
+describe('rdx.home.HomeController', function() {
+  var scope, Cases;
 
-  describe('HomeController', function() {
-    var scope, Cases;
+  beforeEach(module('rdx.home'));
 
-    beforeEach(module('rdx.home.controllers'));
-    beforeEach(module('ui.router'));
+  beforeEach(module(function ($provide) {
+    Cases = {
+      all: function() {
+      }
+    };
+    $provide.value('Cases', Cases);
+  }));
 
-    beforeEach(module(function ($provide) {
-      Cases = {
-        all: function() {
-        }
-      };
-      $provide.value('Cases', Cases);
-    }));
+  beforeEach(inject(function($rootScope, $controller) {
+    scope = $rootScope.$new();
+    $controller('HomeController', {$scope: scope, Cases: Cases});
+  }));
 
-    beforeEach(inject(function($rootScope, $state, $controller) {
-      scope = $rootScope.$new();
-      scope.$state = $state;
-      $controller('HomeController', {$scope: scope, Cases: Cases});
-    }));
-
-    it('should define a start method', function() {
-      expect(scope.start).toBeDefined();
-    });
+  it('should define a start method', function() {
+    expect(scope.start).toBeDefined();
   });
 });

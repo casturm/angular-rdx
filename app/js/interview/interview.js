@@ -1,6 +1,4 @@
-angular.module('rdx.interview', [
-  'ui.router'
-])
+angular.module('rdx.interview')
 
 .config(['$stateProvider', '$urlRouterProvider',
   function ($stateProvider, $urlRouterProvider) {

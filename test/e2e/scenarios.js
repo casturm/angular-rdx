@@ -76,5 +76,19 @@ describe('AngularRDX', function() {
 
       expect(element(by.css('.jumbotron')).getText()).toEqual('You Are Dead!\nSorry, but we can\'t insure you at this time.');
     });
+
+    it('should move on with a valid phone number', function() {
+      browser.get('http://localhost:8000');
+
+      element(by.css('.btn-primary')).click();
+
+      element(by.model('interview.name')).sendKeys('Jane Doe');
+      element(by.model('phone_parts.area')).sendKeys('303');
+      element(by.model('phone_parts.exchange')).sendKeys('244');
+      element(by.model('phone_parts.subscriber')).sendKeys('9076');
+      element(by.css('.btn-primary')).click();
+
+      expect(element(by.css('option[value="trust"]'))).toBeDefined();
+    });
   });
 });

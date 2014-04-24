@@ -1,24 +1,20 @@
+angular.module('rdx.home', []);
+angular.module('rdx.cases', []);
+angular.module('rdx.interview', ['ui.router']);
+
 angular.module('rdx', [
-  'rdx.cases.services',
-  'rdx.cases.controllers',
-  'rdx.home.controllers',
-  'rdx.interview.controllers',
-  'rdx.interview.step.controllers',
+  'rdx.home',
+  'rdx.cases',
   'rdx.interview',
   'ui.router'
 ])
 
-.run(
-  ['$rootScope', '$state', '$stateParams',
-    function ($rootScope,   $state,   $stateParams) {
-
-      // It's very handy to add references to $state and $stateParams to the $rootScope
-      // so that you can access them from any scope
-      $rootScope.$state = $state;
-      $rootScope.$stateParams = $stateParams;
-    }
-  ]
-)
+.run(['$rootScope', '$state', '$stateParams', function ($rootScope,   $state,   $stateParams) {
+  // It's very handy to add references to $state and $stateParams to the $rootScope
+  // so that you can access them from any scope
+  $rootScope.$state = $state;
+  $rootScope.$stateParams = $stateParams;
+}])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
@@ -57,4 +53,5 @@ angular.module('rdx', [
       template: '<div class="jumbotron text-center"><h1>It\'s about Life Insurance</h1></div>'
     });
 }]);
+
 
