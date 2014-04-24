@@ -11,6 +11,10 @@ Spec tests written using Jasmine / Karma
 End to End tests written using protractor
  * https://github.com/angular/protractor
 
+To install dependencies
+-----------------------
+      npm install
+
 To run tests
 -----------------------
 
