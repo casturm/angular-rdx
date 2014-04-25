@@ -1,0 +1,18 @@
+<h2>{{case.name}}</h2>
+<ul>
+  <li>
+  <a ui-sref="cases.detail.item({itemId:'name'})">{{case.name}}</a>
+  </li>
+  <li>
+  <a ui-sref="cases.detail.item({itemId:'username'})">{{case.username}}</a>
+  </li>
+  <li>
+  <a ui-sref="cases.detail.item({itemId:'email'})">{{case.email}}</a>
+  </li>
+  <li>
+  <a ui-sref="cases.detail.item({itemId:'phone_number'})">{{case.phone_number}}</a>
+  </li>
+</ul>
+<div ui-view class="slide">
+  <small class="muted">Click on a item to view and/or edit it.</small>
+</div>

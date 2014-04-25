@@ -4,7 +4,7 @@ angular.module('rdx.cases')
   var path = 'assets/cases.json';
   var cases = [];
   var cases_promise = $http.get(path).then(function(resp) {
-    console.log('get cases: ' + angular.toJson(cases.concat(resp.data.cases)));
+    console.log('get cases response: ' + angular.toJson(cases.concat(resp.data.cases)));
     return cases = cases.concat(resp.data.cases);
   });
 
@@ -28,7 +28,15 @@ angular.module('rdx.cases')
   factory.all = function () {
     return cases_promise;
   };
-
+  factory.findById = function(id) {
+    found_case = [];
+    angular.forEach(cases, function(c) {
+      if (c.id == id) {
+        found_case.push(c);
+      }
+    }, found_case);
+    return found_case[0];
+  };
   return factory;
 }]);
 

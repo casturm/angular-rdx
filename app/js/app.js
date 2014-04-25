@@ -1,17 +1,16 @@
 angular.module('rdx.home', []);
-angular.module('rdx.cases', []);
+angular.module('rdx.cases', ['ui.router']);
 angular.module('rdx.interview', ['ui.router']);
 
 angular.module('rdx', [
   'rdx.home',
   'rdx.cases',
   'rdx.interview',
-  'ui.router'
+  'ui.router',
+  'ngAnimate'
 ])
 
 .run(['$rootScope', '$state', '$stateParams', function ($rootScope,   $state,   $stateParams) {
-  // It's very handy to add references to $state and $stateParams to the $rootScope
-  // so that you can access them from any scope
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }])
@@ -24,17 +23,6 @@ angular.module('rdx', [
       url: '/',
       templateUrl: 'partials/partial-home.html',
       controller: 'HomeController'
-    })
-
-    .state('cases', {
-      url: '/cases',
-      templateUrl: 'cases/cases.list.html',
-      controller: 'CasesController',
-      resolve: {
-        case_list: ['Cases', function(Cases) {
-          return Cases.all();
-        }]
-      }
     })
 
     .state('thankyou', {
