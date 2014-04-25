@@ -3,20 +3,25 @@ describe('rdx.cases.Cases', function(){
 
   beforeEach(module('rdx.cases'));
 
-  beforeEach(inject(function(_$httpBackend_, _Cases_) {
-    Cases = _Cases_;
+  beforeEach(inject(function(_$httpBackend_, $injector) {
+    Cases = $injector.get('Cases');
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('assets/cases.json').
-      respond({cases:[{id: 1, name: 'bob'}]});
   }));
 
   it('can get all the static cases from server and cache them', function() {
+    $httpBackend.expectGET('assets/cases.json').
+      respond({'cases':[{'id': 1, 'name': 'bob'}]});
     expect(Cases.cases()).toEqual([]);
-    Cases.all();
+
+    var cases = [];
+    Cases.all().then(function(data) {
+      cases = data;
+    });
 
     $httpBackend.flush();
 
-    expect(Cases.cases()).toEqual([{id: 1, name: 'bob'}]);
+    expect(cases).toEqual([{'id': 1, 'name': 'bob'}]);
+    expect(Cases.cases()).toEqual(cases);
   });
 
   it('can create a new interview and add it to the cache of cases', function() {

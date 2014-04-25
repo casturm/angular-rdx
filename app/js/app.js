@@ -23,19 +23,18 @@ angular.module('rdx', [
     .state('home', {
       url: '/',
       templateUrl: 'partials/partial-home.html',
-      resolve: {
-        Cases: 'Cases'
-      },
       controller: 'HomeController'
     })
 
     .state('cases', {
       url: '/cases',
       templateUrl: 'cases/cases.list.html',
+      controller: 'CasesController',
       resolve: {
-        Cases: 'Cases'
-      },
-      controller: 'CasesController'
+        case_list: ['Cases', function(Cases) {
+          return Cases.all();
+        }]
+      }
     })
 
     .state('thankyou', {

@@ -8,9 +8,6 @@ angular.module('rdx.interview')
         abstract: true,
         url: '/interview',
         templateUrl: 'interview/interview.html',
-        resolve: {
-          Cases: 'Cases'
-        },
         controller: 'InterviewController'
       })
 
