@@ -1,8 +1,8 @@
 angular.module('rdx.home')
 
-.controller('HomeController', ['$scope', 'Cases', function($scope, Cases) {
+.controller('HomeController', ['$scope', 'Interview', function($scope, Interview) {
   $scope.start = function() {
-    Cases.start_interview();
+    Interview.create();
     $scope.$state.go('interview.step1');
   }
 }]);

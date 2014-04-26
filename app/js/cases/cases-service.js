@@ -1,34 +1,15 @@
 angular.module('rdx.cases')
 
 .factory('Cases', ['$http', function ($http) {
-  var path = 'assets/cases.json';
-  var cases = [];
-  var cases_promise = $http.get(path).then(function(resp) {
-    console.log('get cases response: ' + angular.toJson(cases.concat(resp.data.cases)));
-    return cases = cases.concat(resp.data.cases);
-  });
-
   var factory = {};
-  factory.next_id = 2;
-  factory.start_interview = function() {
-    cases.unshift({ id: this.next_id++ });
-  };
-  factory.current = function() {
-    return cases[0];
-  };
-  factory.save_current = function() {
-    console.log("post current case: " + angular.toJson(cases[0]));
-    $http.post('cases', angular.toJson(cases[0])).then(function (resp) {
-      console.log('server response: ' + angular.toJson(resp.data));
+  factory.all = function () {
+    console.log('get casess');
+    return $http.get('api/cases').then(function(resp) {
+      console.log('  server response: ' + angular.toJson(resp.data));
+      return resp.data.cases;
     });
   };
-  factory.cases = function() {
-    return cases;
-  };
-  factory.all = function () {
-    return cases_promise;
-  };
-  factory.findById = function(id) {
+  factory.findById = function(cases, id) {
     found_case = [];
     angular.forEach(cases, function(c) {
       if (c.id == id) {
@@ -36,6 +17,29 @@ angular.module('rdx.cases')
       }
     }, found_case);
     return found_case[0];
+  };
+  return factory;
+}])
+
+.factory('Interview', ['$http', '$cacheFactory', function ($http, $cacheFactory) {
+  var cache = $cacheFactory('cacheId');
+  var factory = {};
+  factory.current = function() {
+    return cache.get('current');
+  };
+  factory.create = function() {
+    $http.post('api/interview').then(function (resp) {
+      console.log('  server response: ' + angular.toJson(resp.data));
+      cache.put('current', resp.data);
+    });
+  };
+  factory.save = function() {
+    var interview = cache.get('current');
+    console.log("put current interview: " + angular.toJson(interview));
+    return $http.put('api/interview', interview).then(function (resp) {
+      console.log('  server response: ' + angular.toJson(resp.data));
+      return cache.get('interview');
+    });
   };
   return factory;
 }]);

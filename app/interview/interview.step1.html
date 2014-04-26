@@ -6,13 +6,6 @@
     <p ng-show="submitted && form.name.$error.required" class="help-block">You name is required.</p>
   </div>
 
-  <div class="form-group" ng-class="{ 'has-error' : submitted && form.username.$invalid }">
-    <label class="control-label">Username</label>
-    <input type="text" name="username" class="form-control" ng-model="interview.username" ng-minlength="3" ng-maxlength="8">
-    <p ng-show="submitted && form.username.$error.minlength" class="help-block">Username is too short.</p>
-    <p ng-show="submitted && form.username.$error.maxlength" class="help-block">Username is too long.</p>
-  </div>
-
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.email.$invalid }">
     <label class="control-label">Email</label>
     <input type="email" name="email" class="form-control" ng-model="interview.email">
@@ -35,6 +28,6 @@
     <p ng-show="submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid)" class="help-block">Enter a valid phone number.</p>
   </div>
 
-  <button type="submit" class="btn btn-primary">Next</button>
+  <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
 </form>
 

@@ -16,6 +16,7 @@ module.exports = function(config) {
       'app/js/cases/*.js',
       'app/js/home/*.js',
       'app/js/interview/*.js',
+      'app/js/users/*.js',
       'test/**/*.js'
     ],
 

@@ -5,21 +5,20 @@ describe('rdx.interview.InterviewController', function() {
   beforeEach(module('ui.router'));
 
   beforeEach(module(function ($provide) {
-    Cases = {
-      current: function() {
-        return {id: 3, name: 'tester'};
-      },
-      save_current: function() {}
+    Interview = {
+      current: function() { return {} },
+      save: function(interview) {}
     };
-    $provide.value('Cases', Cases);
+    $provide.value('Interview', Interview);
   }));
 
   describe('initialization and scope assignments', function() {
 
     beforeEach(inject(function($rootScope, $state, $controller) {
       scope = $rootScope.$new();
+      scope.interview = {};
       scope.$state = $state;
-      $controller('InterviewController', {$scope: scope, Cases: Cases});
+      $controller('InterviewController', {$scope: scope, Interview: Interview});
     }));
 
     it('should assign breadcrumbs with interview step states', function() {
@@ -29,10 +28,6 @@ describe('rdx.interview.InterviewController', function() {
         crumbs.push(crumb.breadcrumb);
       }, crumbs);
       expect(crumbs).toEqual(['Who Are You?','Who Wins?','About You','More About You']);
-    });
-
-    it('should assign current interview', function() {
-      expect(scope.interview).toEqual({id: 3, name: 'tester'});
     });
 
     it('should define a save method', function() {
@@ -52,7 +47,7 @@ describe('rdx.interview.InterviewController', function() {
       scope.$state.current = {
         pageHeader: 'I am a page header'
       };
-      $controller('InterviewController', {$scope: scope, Cases: Cases});
+      $controller('InterviewController', {$scope: scope, Interview: Interview});
     }));
 
     it('should set submitted true and not do anything else when save(false, "nextStep") is called', function() {
@@ -60,13 +55,13 @@ describe('rdx.interview.InterviewController', function() {
       expect(scope.submitted).toBe(true);
     });
 
-    it('should save current, set submitted false and go to the next step when save(true, "nextStep") is called', function() {
-      spyOn(Cases, 'save_current');
+    it('should save current interview, set submitted false and go to the next step when save(true, "nextStep") is called', function() {
+      spyOn(Interview, 'save');
       spyOn(scope.$state, 'go');
 
       scope.save(true, 'nextStep');
 
-      expect(Cases.save_current).toHaveBeenCalled();
+      expect(Interview.save).toHaveBeenCalled();
       expect(scope.$state.go).toHaveBeenCalledWith('nextStep');
       expect(scope.submitted).toBe(false);
     });

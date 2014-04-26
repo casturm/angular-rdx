@@ -4,15 +4,16 @@ angular.module('rdx.cases')
   function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
+    .state('login', {
+      url: '/login',
+      templateUrl: 'users/login.html',
+      controller: 'UserController'
+    })
+
     .state('cases', {
       url: '/cases',
       abstract: true,
       templateUrl: 'cases/cases.html',
-      resolve: {
-        case_list: ['Cases', function(Cases) {
-          return Cases.all();
-        }]
-      },
       controller: 'CasesController'
     })
 
@@ -28,7 +29,7 @@ angular.module('rdx.cases')
           templateUrl: 'cases/cases.detail.html',
           controller: ['$scope', '$stateParams', 'Cases',
             function ($scope, $stateParams, Cases) {
-              $scope.case = Cases.findById($stateParams.caseId);
+              $scope.case = Cases.findById($scope.cases, $stateParams.caseId);
             }]
         }
       }
@@ -38,7 +39,7 @@ angular.module('rdx.cases')
       url: '/item/:itemId',
       views: {
         '': {
-          template: '<div class="slide"><h4>{{itemId}} <button class="btn">Edit</button></h4><div>{{item}}</div></div>',
+          templateUrl: 'cases/cases.detail.item.html',
           controller: ['$scope', '$stateParams', 'Cases', function($scope, $stateParams, Cases) {
             $scope.itemId = $stateParams.itemId;
             $scope.item = $scope.case[$stateParams.itemId];

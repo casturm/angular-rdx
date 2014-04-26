@@ -1,4 +1,4 @@
-<form name="form" ng-submit="save(form.$valid, 'interview.step4')" novalidate>
+<form class="col-sm-offset-2" name="form" ng-submit="save(form.$valid, 'interview.step4')" novalidate>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_taker.$invalid }">
     <label class="control-label">Are You a Risk Taker</label>
@@ -26,6 +26,6 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Next</button>
+  <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
 </form>
 

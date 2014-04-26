@@ -1,5 +1,7 @@
 angular.module('rdx.cases')
 
-.controller('CasesController', ['$scope', 'case_list', function($scope, case_list) {
-  $scope.cases = case_list;
+.controller('CasesController', ['$scope', 'Cases', function($scope, Cases) {
+  Cases.all().then(function(cases) {
+    $scope.cases = cases;
+  });
 }]);

@@ -7,12 +7,15 @@ exports.config = {
     'browserName': 'chrome'
   },
 
-  specs: [
-    '../test/e2e/scenarios.js',
-  ],
+  suites: {
+    interview: '../test/e2e/interview.js',
+    cases: '../test/e2e/cases.js'
+  },
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
     showColors: true, // Use colors in the command line report.
-  }
+  },
+
+  baseUrl: 'http://localhost:8000'
 };
