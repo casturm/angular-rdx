@@ -1,6 +1,6 @@
 angular.module('rdx.auth')
 
-.factory('AuthService', ['$rootScope', 'authService', '$http', '$cacheFactory', function($rootScope, authService, $http, $cacheFactory) {
+.factory('AuthService', ['$rootScope', 'authService', '$http', function($rootScope, authService, $http) {
   var auth = {
     authenticate: function(user) {
       console.log('autenthicate: ' + angular.toJson(user));
@@ -11,22 +11,25 @@ angular.module('rdx.auth')
         console.log('authenticate response: ' + angular.toJson(data));
         authService.loginConfirmed(data);
       })
+    },
+    login: function() {
+      $rootScope.$broadcast('event:auth-loginRequired');
     }
   };
   return auth;
 }])
 
-.factory('authInterceptor', ['$cacheFactory', '$rootScope', function ($cacheFactory, $rootScope) {
-  var cache = $cacheFactory('auth');
+.factory('authInterceptor', ['$rootScope', function ($rootScope) {
+  var token;
   $rootScope.$on('event:auth-loginConfirmed', function(event, data) {
     console.log('loginConfirmed ' + angular.toJson(data));
-    cache.put('token', data.token);
+    token = data.token;
   });
   return {
     request: function (config) {
       config.headers = config.headers || {};
-      if (cache.get('token')) {
-        config.headers.Authorization = 'Bearer ' + cache.get('token');
+      if (token) {
+        config.headers.Authorization = 'Bearer ' + token;
       }
       console.log('request ' + angular.toJson(config));
       return config;

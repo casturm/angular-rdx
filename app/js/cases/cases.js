@@ -4,12 +4,6 @@ angular.module('rdx.cases')
   function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-    .state('login', {
-      url: '/login',
-      templateUrl: 'users/login.html',
-      controller: 'UserController'
-    })
-
     .state('cases', {
       url: '/cases',
       abstract: true,

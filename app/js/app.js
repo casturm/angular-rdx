@@ -1,4 +1,4 @@
-angular.module('rdx.auth', ['http-auth-interceptor']);
+angular.module('rdx.auth', ['ui.router','http-auth-interceptor']);
 angular.module('rdx.users', []);
 angular.module('rdx.home', []);
 angular.module('rdx.cases', ['ui.router']);
@@ -28,6 +28,15 @@ angular.module('rdx', [
       url: '/',
       templateUrl: 'home/home.html',
       controller: 'HomeController'
+    })
+
+    .state('login', {
+      url: '/login',
+      templateUrl: 'home/home.html',
+      controller: function($scope, $state, AuthService) {
+        $state.go('home');
+        AuthService.login();
+      }
     })
 
     .state('thankyou', {

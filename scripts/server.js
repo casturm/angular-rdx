@@ -65,7 +65,7 @@ app.get('/api/cases', function(req, res) {
 
 var cases = {
   "0": {
-      id: 1,
+      id: 0,
       name: "bob",
       email: "bob@foobar.com",
       phone_number: "3034430971",
