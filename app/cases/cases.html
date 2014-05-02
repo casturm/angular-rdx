@@ -6,7 +6,7 @@
       </div>
       <h2><small>Top Cases</small></h2>
       <div class="list-group">
-        <a ng-repeat="case in cases | limitTo:5" class="list-group-item" ui-sref="cases.detail({caseId:case.id})" ui-sref-active="active">{{case.name}}</a>
+        <a ng-repeat="case in cases | filter:{name: '!!'} | limitTo:5" class="list-group-item" ui-sref="cases.detail({caseId:case.id})" ui-sref-active="active">{{case.name}}</a>
       </div>
     </div>
   </div>
