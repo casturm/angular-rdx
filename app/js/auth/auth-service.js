@@ -4,13 +4,20 @@ angular.module('rdx.auth')
   var auth = {
     authenticate: function(user) {
       console.log('autenthicate: ' + angular.toJson(user));
-      $http
-      .post('/authenticate', user)
-      .success(function(data, status, headers, config) {
-        $rootScope.user = {name: data.profile.first_name};
-        console.log('authenticate response: ' + angular.toJson(data));
-        authService.loginConfirmed(data);
-      })
+      var config = {ignoreAuthModule: true};
+      return $http
+        .post('/authenticate', user, config)
+        .success(function(data, status, headers, config) {
+          $rootScope.user = {name: data.profile.first_name};
+          console.log('authenticate response: ' + angular.toJson(data));
+          authService.loginConfirmed(data);
+        })
+        .error(function(data, status, headers, config) {
+          console.log('authenticate failed response: ' + angular.toJson(status) + ' ' + angular.toJson(data));
+          console.log('authenticate failed headers: ' + angular.toJson(headers));
+          console.log('authenticate failed config: ' + angular.toJson(config));
+          return data;
+        });
     },
     login: function() {
       $rootScope.$broadcast('event:auth-loginRequired');

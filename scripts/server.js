@@ -29,8 +29,8 @@ app.post('/authenticate', function (req, res) {
 
   function send(err, body) {
     console.log('authenticate: ' + JSON.stringify(body));
-    if (!(body.username === 'admin' && body.password === 'doit')) {
-      res.send(401, 'Wrong user or password');
+    if (body == undefined || !(body.username === 'admin' && body.password === 'doit')) {
+      res.send(401, 'The username or password you entered is incorrect');
       return;
     }
 

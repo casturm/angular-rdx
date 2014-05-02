@@ -4,9 +4,6 @@ angular.module('rdx.auth')
   return {
     restrict: 'C',
     link: function(scope, elem, attrs) {
-      //once Angular is started, remove class:
-      elem.removeClass('waiting-for-angular');
-
       var login = $('#login-holder');
       var main = $('#content');
 
