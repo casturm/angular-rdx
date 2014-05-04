@@ -43,7 +43,9 @@
       <li ng-class="{ active: $state.includes('cases') }"><a ui-sref="cases.list">Cases</a></li>
       <li ng-class="{ active: $state.current.name == 'about' }"><a ui-sref="about">About</a></li>
     </ul>
-    <p ng-if="user.name" class="navbar-text navbar-right">Signed in as {{user.name}}</p>
+    <div class="navbar-right">
+      <p ng-if="user.name" class="navbar-text">Signed in as {{user.name}} </p>
+    </div>
     </nav>
 
     <div class="container">
@@ -57,7 +59,7 @@
   <div class="footer">
     <div class="container">
       <p>LifeInCoolTech</p>
-      <small>Life Insurance and Cool Technology</small>
+      <h6><small>Life Insurance and Cool Technology</small></h6>
     </div>
   </div>
 

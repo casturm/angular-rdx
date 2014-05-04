@@ -1,0 +1,58 @@
+<form class="col-sm-9" name="form" ng-submit="finish(form.$valid)" novalidate>
+
+  <div class="well" id="quotetable">
+    <h2><small>Click on an amount to select your premium</small></h2>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Coverage Amount</th>
+          <th>Monthly Premiums By Term</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="quote in quotes">
+          <td>{{quote.coverageAmount}}</td>
+          <td>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th ng-repeat="premium in quote.premiums.monthly">{{premium.term}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td ng-repeat="premium in quote.premiums.monthly">
+                    <input type="radio" class="premium_quote" ng-value='premium' id="{{premium.id}}" ng-model="interview.selectedPremium"><label for="{{premium.id}}">{{premium.amount}}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row quotedropdowns">
+    <div class="col-sm-3">
+      <div>
+        <select class="form-control" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
+          <option value="">Coverage Amount</option>
+        </select>
+
+        <select class="form-control" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
+          <option value="">Term</option>
+        </select>
+      </div>
+      <div>
+        <label for='monthly_premium'>
+          Monthly Premium
+          <br><br>
+          <span>{{interview.selectedPremium.amount}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" name="next" class="btn btn-primary btn-lg">Finish!</button>
+</form>

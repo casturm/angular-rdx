@@ -64,12 +64,27 @@ angular.module('rdx.interview')
         pageHeader: "Still More About You",
         views: {
           '': {
-            templateUrl: 'interview/interview.step4.html',
-            controller: 'InterviewStep4Controller'
+            templateUrl: 'interview/interview.step4.html'
           },
 
           'hint@': {
             template: 'One more question ... we promise.'
+          }
+        }
+      })
+
+      .state('interview.quote', {
+        url: '',
+        breadcrumb: 'Your Quote',
+        pageHeader: "Choose Your Coverage Amount",
+        views: {
+          '': {
+            templateUrl: 'interview/interview.quote.html',
+            controller: 'InterviewStep4Controller'
+          },
+
+          'hint@': {
+            template: 'Think about it and pick a number.'
           }
         }
       });

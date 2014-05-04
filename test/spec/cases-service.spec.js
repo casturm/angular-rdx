@@ -3,29 +3,33 @@ describe('rdx.cases.Cases', function(){
 
   beforeEach(module('rdx.cases'));
 
-  beforeEach(inject(function(_$httpBackend_, $injector) {
-    Cases = $injector.get('Cases');
+  beforeEach(inject(function(_$httpBackend_, _Cases_) {
+    Cases = _Cases_;
     $httpBackend = _$httpBackend_;
   }));
 
-  //it('can get all the static cases from server and cache them', function() {
-    //$httpBackend.expectGET('api/cases').
-      //respond({'cases':[{'id': 1, 'name': 'bob'}]});
-    //expect(Cases.all()).toEqual([]);
+  it('can get all the cases', function() {
+    var returnedCases = [{id: 1,name: 'bob'}];
 
-    //var cases = [];
-    //Cases.all().then(function(data) {
-      //cases = data;
-    //});
+    $httpBackend.expectGET('api/cases').respond({cases: returnedCases});
 
-    //$httpBackend.flush();
+    var casesPromise = Cases.all();
 
-    //expect(cases).toEqual([{'id': 1, 'name': 'bob'}]);
-    //expect(Cases.all()).toEqual(cases);
-  //});
+    var cases;
+    casesPromise.then(function(resp) {
+      cases = resp;
+    });
 
-  //it('can create a new interview and add it to the cache of cases', function() {
-    //expect(Interview.create()).toEqual({ id: 2 });
-  //});
+    $httpBackend.flush();
+
+    expect(cases).toEqual(returnedCases);
+  });
+
+  it('can find a case by id', function() {
+    var returnedCase = {id: 2, name: 'found'};
+    var cases = [{id: 1,name: 'bob'}, returnedCase, {id: 3, name: 'fred'}];
+
+    expect(Cases.findById(cases, 2)).toEqual(returnedCase);
+  });
 
 });

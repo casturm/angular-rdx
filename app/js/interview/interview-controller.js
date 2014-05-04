@@ -8,7 +8,8 @@ angular.module('rdx.interview')
     $scope.$state.get('interview.step1'),
     $scope.$state.get('interview.step2'),
     $scope.$state.get('interview.step3'),
-    $scope.$state.get('interview.step4')
+    $scope.$state.get('interview.step4'),
+    $scope.$state.get('interview.quote')
   ];
 
   $scope.save = function(isValid, nextStep) {

@@ -22,12 +22,12 @@ describe('rdx.interview.InterviewController', function() {
     }));
 
     it('should assign breadcrumbs with interview step states', function() {
-      expect(scope.breadcrumbs.length).toEqual(4);
+      expect(scope.breadcrumbs.length).toEqual(5);
       var crumbs = [];
       angular.forEach(scope.breadcrumbs, function(crumb) {
         crumbs.push(crumb.breadcrumb);
       }, crumbs);
-      expect(crumbs).toEqual(['Who Are You?','Who Wins?','About You','More About You']);
+      expect(crumbs).toEqual(['Who Are You?','Who Wins?','About You','More About You', 'Your Quote']);
     });
 
     it('should define a save method', function() {
