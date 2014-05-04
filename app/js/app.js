@@ -3,6 +3,7 @@ angular.module('rdx.users', []);
 angular.module('rdx.home', []);
 angular.module('rdx.cases', ['ui.router']);
 angular.module('rdx.interview', ['ui.router']);
+angular.module('rdx.quotes', []);
 
 angular.module('rdx', [
   'rdx.auth',
@@ -10,6 +11,7 @@ angular.module('rdx', [
   'rdx.home',
   'rdx.cases',
   'rdx.interview',
+  'rdx.quotes',
   'ui.router',
   'http-auth-interceptor',
   'ngAnimate'

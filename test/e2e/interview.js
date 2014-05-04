@@ -37,6 +37,9 @@ describe('AngularRDX', function() {
       element(by.name('alive_yes')).click();
       element(by.name('next')).click();
 
+      element(by.id('25000_15')).click();
+      element(by.name('next')).click();
+
       var text = element(by.css('.jumbotron h1')).getText();
       expect(text).toEqual('Thank You!');
     });
@@ -56,6 +59,9 @@ describe('AngularRDX', function() {
       element(by.name('next')).click();
 
       element(by.name('alive_no')).click();
+      element(by.name('next')).click();
+
+      element(by.id('25000_15')).click();
       element(by.name('next')).click();
 
       var text = element(by.css('.jumbotron h1')).getText();

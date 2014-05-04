@@ -1,4 +1,4 @@
-<form class="col-sm-9" name="form" ng-submit="finish(form.$valid)" novalidate>
+<form class="col-sm-9 col-xs-7" name="form" ng-submit="finish(form.$valid)" novalidate>
 
   <div class="well" id="quotetable">
     <h2><small>Click on an amount to select your premium</small></h2>
@@ -33,26 +33,28 @@
     </table>
   </div>
 
-  <div class="row quotedropdowns">
-    <div class="col-sm-3">
-      <div>
-        <select class="form-control" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
-          <option value="">Coverage Amount</option>
-        </select>
-
-        <select class="form-control" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
-          <option value="">Term</option>
-        </select>
-      </div>
-      <div>
-        <label for='monthly_premium'>
-          Monthly Premium
-          <br><br>
-          <span>{{interview.selectedPremium.amount}}</span>
-        </label>
-      </div>
-    </div>
+  <div class="form-group">
+    <h2>
+      <span class="label label-success">Monthly Premium
+        <span ng-show="interview.selectedPremium"> $ {{interview.selectedPremium.amount}} </span>
+        <span ng-show="!interview.selectedPremium"> $ --.--  </span>
+      </span>
+    </h2>
+  </div>
+  <div class="form-group">
+    <label for="selectedQuote">Choose an Amount</label>
+    <select class="form-control" id="selectedQuote" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
+      <option value="">Coverage Amount</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="selectedPremium">Choose a Term</label>
+    <select class="form-control" id="selectedPremium" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
+      <option value="">Term</option>
+    </select>
   </div>
 
   <button type="submit" name="next" class="btn btn-primary btn-lg">Finish!</button>
+
 </form>
+
