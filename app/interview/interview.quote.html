@@ -3,7 +3,7 @@
     <div id='quotetable'>
       <h4>Click on an amount to select your premium</h4>
       <div class="well">
-        <table class="table table-condensed text-center">
+        <table class="table table-condensed">
           <thead>
             <tr>
               <th>Amount</th>
@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="quote in quotes">
-              <td>{{quote.coverageAmount}}</td>
+              <td>${{quote.coverageAmount}}</td>
               <td ng-repeat="premium in quote.premiums.monthly">
                 <button type='button' id="{{premium.id}}" class="btn btn-default" ng-click="interview.selectedPremium = premium" ng-class="{active: interview.selectedPremium == premium}">
                   ${{premium.amount}}

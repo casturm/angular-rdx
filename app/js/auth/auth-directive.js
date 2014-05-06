@@ -4,8 +4,8 @@ angular.module('rdx.auth')
   return {
     restrict: 'C',
     link: function(scope, elem, attrs) {
-      var login = $('#login-holder');
-      var main = $('#content');
+      var login = $('#login-content');
+      var main = $('#main-content');
 
       scope.$on('event:auth-loginRequired', function() {
         login.slideDown('slow', function() {
