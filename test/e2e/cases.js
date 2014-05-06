@@ -1,8 +1,15 @@
 describe('AngularRDX', function() {
 
+  var ptor;
+  beforeEach(function() {
+    ptor = protractor.getInstance();
+  });
+
   describe('cases page', function() {
     beforeEach(function() {
-      element(by.css('.navbar ul li')).click();
+      element(by.css('.navbar ul li')).click().then(function() {
+        expect(ptor.isElementPresent(by.css('.page-header'))).toBe(true);
+      });
     });
 
     it('should display the list of cases when I click the Cases menu item', function() {
