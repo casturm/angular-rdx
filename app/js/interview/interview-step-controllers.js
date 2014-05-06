@@ -39,6 +39,16 @@ angular.module('rdx.interview')
     $scope.quotes = quotes;
   });
 
+  $scope.activate = function(premium) {
+    $scope.interview.selectedPremium = premium;
+    console.log('activate: ' + angular.toJson(premium));
+  };
+
+  $scope.isActive = function(premium) {
+    console.log('isActive: ' + angular.toJson(premium));
+    return angular.isDefined($scope.interview.selectedPremium) && ($scope.interview.selectedPremium == premium);
+  }
+
   $scope.$watch('interview.selectedPremium', function(newPremium, oldPremium) {
     if (angular.isDefined(newPremium)) {
       angular.forEach($scope.quotes, function(quote) {

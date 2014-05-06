@@ -76,7 +76,7 @@ angular.module('rdx.interview')
       .state('interview.quote', {
         url: '',
         breadcrumb: 'Your Quote',
-        pageHeader: "Choose Your Coverage Amount",
+        pageHeader: "Monthly Premiums",
         views: {
           '': {
             templateUrl: 'interview/interview.quote.html',

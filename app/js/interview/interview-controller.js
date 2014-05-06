@@ -2,6 +2,11 @@ angular.module('rdx.interview')
 
 .controller('InterviewController', ['$scope', 'Interview', function($scope, Interview) {
   $scope.interview = Interview.current();
+
+  if (angular.isUndefined($scope.interview)) {
+    $scope.$state.go('home');
+  }
+
   $scope.submitted = false;
 
   $scope.breadcrumbs = [

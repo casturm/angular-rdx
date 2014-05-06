@@ -1,57 +1,46 @@
-<form class="col-sm-9 col-xs-7" name="form" ng-submit="finish(form.$valid)" novalidate>
+<form name="form" ng-submit="finish(form.$valid)" novalidate>
 
-  <div class="well" id="quotetable">
-    <h2><small>Click on an amount to select your premium</small></h2>
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th>Coverage Amount</th>
-          <th>Monthly Premiums By Term</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="quote in quotes">
-          <td>{{quote.coverageAmount}}</td>
-          <td>
-            <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <th ng-repeat="premium in quote.premiums.monthly">{{premium.term}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td ng-repeat="premium in quote.premiums.monthly">
-                    <input type="radio" class="premium_quote" ng-value='premium' id="{{premium.id}}" ng-model="interview.selectedPremium"><label for="{{premium.id}}">{{premium.amount}}</label>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div id='quotetable'>
+      <h4>Click on an amount to select your premium</h4>
+      <div class="well">
+        <table class="table table-condensed text-center">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th ng-repeat="premium in quotes[0].premiums.monthly">
+                {{premium.term}} years
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="quote in quotes">
+              <td>{{quote.coverageAmount}}</td>
+              <td ng-repeat="premium in quote.premiums.monthly">
+                <button type='button' id="{{premium.id}}" class="btn btn-default" ng-click="interview.selectedPremium = premium" ng-class="{active: interview.selectedPremium == premium}">
+                  ${{premium.amount}}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <h2>
-      <span class="label label-success">Monthly Premium
-        <span ng-show="interview.selectedPremium"> $ {{interview.selectedPremium.amount}} </span>
-        <span ng-show="!interview.selectedPremium"> $ --.--  </span>
-      </span>
-    </h2>
-  </div>
-  <div class="form-group">
-    <label for="selectedQuote">Choose an Amount</label>
-    <select class="form-control" id="selectedQuote" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
-      <option value="">Coverage Amount</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="selectedPremium">Choose a Term</label>
-    <select class="form-control" id="selectedPremium" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
-      <option value="">Term</option>
-    </select>
+    <div id="quotedropdowns">
+      <h4 for="selectedQuote">Choose an Amount</h4>
+      <select class="form-control" id="selectedQuote" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
+        <option value="">Coverage Amount</option>
+      </select>
+      <h4 for="selectedPremium">Choose a Term</h4>
+      <select class="form-control" id="selectedPremium" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
+        <option value="">Term</option>
+      </select>
+      <h4 class="text-center">Your Premium</h4>
+      <div class="well text-center">
+        <span ng-show="interview.selectedPremium"><h2>$ {{interview.selectedPremium.amount}}</h2></span>
+        <span ng-show="!interview.selectedPremium"><h2> $ --.-- </h2></span>
+      </div>
+    </div>
   </div>
 
   <button type="submit" name="next" class="btn btn-primary btn-lg">Finish!</button>

@@ -14,7 +14,6 @@ body {
   text-align: center;
   border-top: 1px solid #e5e5e5;
 }
-
 .slide.ng-leave {
   position: relative;
 }
@@ -43,7 +42,7 @@ body {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px)
 {
-	.quotedropdowns
+	#quotedropdowns
 	{
 		display: none;
 	}
@@ -53,6 +52,21 @@ body {
 @media (max-width: 767px)
 {
   #quotetable
+  {
+    display: none;
+  }
+  #hint
+  {
+    display: none;
+  }
+  .navbar {
+    text-align: center;
+  }
+  .navbar-brand
+  {
+    float: none;
+  }
+  #top-cases
   {
     display: none;
   }
