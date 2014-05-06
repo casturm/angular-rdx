@@ -7,6 +7,7 @@ angular.module('rdx.interview')
     return current;
   };
   factory.create = function() {
+    console.log('create interview');
     return $http.post('api/interview').then(function (resp) {
       console.log('  server response: ' + angular.toJson(resp.data));
       current = resp.data;
