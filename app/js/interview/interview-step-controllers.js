@@ -8,6 +8,13 @@ angular.module('rdx.interview')
     $scope.phone_number = ($scope.phone_parts.area || '') + ($scope.phone_parts.exchange || '') + ($scope.phone_parts.subscriber || '');
     return $scope.phone_number.length > 0 && $scope.phone_number.length != 10;
   };
+
+  $scope.savePersonalInfo = function(isValid) {
+    if (angular.isDefined($scope.phone_number) && $scope.phone_number.length == 10) {
+      $scope.interview.phone_number = $scope.phone_number;
+    }
+    $scope.save(isValid, 'interview.step2');
+  };
 }])
 
 .controller('InterviewStep2Controller', ['$scope', function($scope) {

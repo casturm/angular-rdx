@@ -22,4 +22,21 @@ describe('rdx.interview.InterviewStep1Controller', function() {
     scope.phoneNumberParts();
     expect(scope.phone_number).toEqual('2025438967');
   });
+
+  describe('scope.savePersonalInfo()', function() {
+    beforeEach(function() {
+      scope.save = function() {}
+    });
+
+    it('should be defined', function() {
+      expect(scope.savePersonalInfo).toBeDefined();
+    });
+
+    it('should set interview.phone_number if scope.phone_number is defined', function() {
+      scope.phone_number = '1234567890';
+      spyOn(scope, 'save');
+      scope.savePersonalInfo(true);
+      expect(scope.save).toHaveBeenCalledWith(true, 'interview.step2');
+    });
+  });
 });
