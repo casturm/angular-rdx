@@ -3,19 +3,21 @@
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_taker.$invalid }">
     <label class="control-label">Are You a Risk Taker</label>
 
-    <div class="radio">
-      <label>
-        <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
-        Not Really
-      </label>
+    <div class="col-sm-offset-1">
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
+          Not Really
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='Yes' name="risk_taker_yes" ng-model='interview.risk_taker' autocomplete='off'>
+          Big Time!
+        </label>
+      </div>
+      <p ng-show="submitted && (form.risk_taker_no.checked || form.risk_taker_yes.checked)" class="help-block">Risk Taker answer is required</p>
     </div>
-    <div class="radio">
-      <label>
-        <input type='radio' class='boolean' value='Yes' name="risk_taker_yes" ng-model='interview.risk_taker' autocomplete='off'>
-        Big Time!
-      </label>
-    </div>
-    <p ng-show="submitted && (form.risk_taker_no.checked || form.risk_taker_yes.checked)" class="help-block">Risk Taker answer is required</p>
   </div>
 
   <div ng-show="interview.risk_taker == 'Yes'">

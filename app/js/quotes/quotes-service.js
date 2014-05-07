@@ -4,7 +4,7 @@ angular.module('rdx.quotes')
   var factory = {};
   factory.getQuotes = function () {
     console.log('get quotes');
-    return $http.get('quotes/quotes.json').then(function(resp) {
+    return $http.get('api/quotes').then(function(resp) {
       console.log('  server response: ' + angular.toJson(resp.data));
       return resp.data;
     });

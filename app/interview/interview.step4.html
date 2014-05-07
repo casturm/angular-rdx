@@ -3,19 +3,21 @@
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.alive.$invalid }">
     <label class="control-label">Are You Alive?</label>
 
-    <div class="radio">
-      <label>
-        <input type='radio' class='boolean' value='Yes' name="alive_yes" ng-model='interview.alive' autocomplete='off'>
-        Yes
-      </label>
+    <div class="col-sm-offset-1">
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='Yes' name="alive_yes" ng-model='interview.alive' autocomplete='off'>
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
+          No
+        </label>
+      </div>
+      <p ng-show="submitted && (form.alive_no.checked || form.alive_yes.checked)" class="help-block">Alive answer is required</p>
     </div>
-    <div class="radio">
-      <label>
-        <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
-        No
-      </label>
-    </div>
-    <p ng-show="submitted && (form.alive_no.checked || form.alive_yes.checked)" class="help-block">Alive answer is required</p>
   </div>
 
   <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>

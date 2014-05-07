@@ -1,10 +1,32 @@
 body {
   padding-top:30px;
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 .form-inline .form-group {
   margin-left: 0;
   margin-right: 0;
+}
+.inputRow
+{
+	display: table;
+	width: 100%;
+	padding: 0px;
+}
+.inputRow > div
+{
+	padding-right: 0px;
+}
+.inputWrapper
+{
+	display: table-cell;
+	padding: 0px 5px;
+}
+.inputWrapper:first-of-type
+{
+	padding-left: 0px;
+}
+.phoneNumberPart {
+  text-align: center;
 }
 .footer {
   padding-top: 40px;

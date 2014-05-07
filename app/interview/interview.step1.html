@@ -1,33 +1,48 @@
-<form name="form" ng-submit="savePersonalInfo(form.$valid)" novalidate>
+<form name="form" class="form-horizontal" role="form" ng-submit="savePersonalInfo(form.$valid)" novalidate>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.name.$invalid }">
-    <label class="control-label">Name</label>
-    <input type="text" name="name" class="form-control" ng-model="interview.name" required>
-    <p ng-show="submitted && form.name.$error.required" class="help-block">Your name is required.</p>
+    <div class="col-md-12">
+      <label class="control-label">Name</label>
+      <input type="text" name="name" class="form-control" ng-model="interview.name" required>
+      <p ng-show="submitted && form.name.$error.required" class="help-block">Your name is required.</p>
+    </div>
   </div>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.email.$invalid }">
-    <label class="control-label">Email</label>
-    <input type="email" name="email" class="form-control" ng-model="interview.email">
-    <p ng-show="submitted && form.email.$invalid" class="help-block">Enter a valid email.</p>
-  </div>
-
-  <div class="form-group" ng-class="{ 'has-error' : submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid) }">
-    <label class="control-label">Phone</label>
-    <div class="form-inline">
-      <div class="form-group">
-        <input type="text" name="area" class="form-control" ng-model="phone_parts.area" size="3" maxLength="3" ng-pattern="/[2-9]{1}\d{2}/" ng-minlength="3" ng-required="phoneNumberParts()">
-      </div>
-      <div class="form-group">
-        <input type="text" name="exchange" class="form-control" ng-model="phone_parts.exchange" size="3" maxLength="3" ng-pattern="/\d{3}/" ng-minlength="3" ng-required="phoneNumberParts()">
-      </div>
-      <div class="form-group">
-        <input type="text" name="subscriber" class="form-control" ng-model="phone_parts.subscriber" size="4" maxLength="4" ng-pattern="/\d{4}/" ng-minlength="4" ng-required="phoneNumberParts()">
-      </div>
+    <div class="col-md-12">
+      <label class="control-label">Email</label>
+      <input type="email" name="email" class="form-control" ng-model="interview.email">
+      <p ng-show="submitted && form.email.$invalid" class="help-block">Enter a valid email.</p>
     </div>
-    <p ng-show="submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid)" class="help-block">Enter a valid phone number.</p>
   </div>
 
-  <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
+  <div class="form-group">
+    <div class="col-md-6" ng-class="{ 'has-error' : submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid) }">
+      <label class="control-label">Phone</label>
+			<div class="inputRow">
+        <div class="inputWrapper">
+          <input type="text" name="area" class="form-control phoneNumberPart" ng-model="phone_parts.area" size="3" maxLength="3" ng-pattern="/[2-9]{1}\d{2}/" ng-minlength="3" ng-required="phoneNumberParts()">
+        </div>
+        <div class="inputWrapper">
+          <input type="text" name="exchange" class="form-control phoneNumberPart" ng-model="phone_parts.exchange" size="3" maxLength="3" ng-pattern="/\d{3}/" ng-minlength="3" ng-required="phoneNumberParts()">
+        </div>
+        <div class="inputWrapper">
+          <input type="text" name="subscriber" class="form-control phoneNumberPart" ng-model="phone_parts.subscriber" size="4" maxLength="4" ng-pattern="/\d{4}/" ng-minlength="4" ng-required="phoneNumberParts()">
+        </div>
+      </div>
+      <p ng-show="submitted && (form.area.$invalid || form.exchange.$invalid || form.subscriber.$invalid)" class="help-block">Enter a valid phone number.</p>
+    </div>
+
+    <div class="col-md-6">
+      <label class="control-label">Birthdate</label>
+      <input class="form-control" ui-date ui-date-format="mm/dd/yy" name="birthdate" ng-model="interview.birthdate">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-12">
+      <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
+    </div>
+  </div>
 </form>
 

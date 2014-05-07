@@ -15,6 +15,8 @@ angular.module('rdx.interview')
     }
     $scope.save(isValid, 'interview.step2');
   };
+
+  //$scope.interview.birthdate = "01/21/1974";
 }])
 
 .controller('InterviewStep2Controller', ['$scope', function($scope) {

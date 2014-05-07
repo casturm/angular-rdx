@@ -10,6 +10,7 @@ var port = process.env.PORT || 8000,
     expressJwt = require('express-jwt'),
     jwt = require('jsonwebtoken'),
     urlencode = require('urlencode'),
+    https = require('https'),
     app = express();
 
 
@@ -95,6 +96,85 @@ app.put('/api/interview', function(req, res){
   }
   jsonBody(req, res, send)
 });
+
+app.get('/api/quotes', function(req, res){
+  var request = {
+    FaceAmountIncrement: 25000,
+    FaceAmountMin: 25000,
+    FaceAmountMax: 250000,
+    PlanCode: [ "RDEXPT1" ],
+    TermLength: [10, 15, 20, 30],
+    DOB: "01/21/1974",
+    State: "OR",
+    Tobacco: "false",
+    Gender: "male"
+  };
+
+  getQuotesFromFlaService(request, res);
+});
+
+transform = function(quoteData) {
+  var data = JSON.parse(quoteData);
+
+  var quoteHash = {};
+  var arrayLength = data.length;
+  for (var i = 0; i < arrayLength; i++) {
+    q = data[i];
+    premium = {};
+    premium.id = q["FaceAmount"] + '_' + q["TermLength"];
+    premium.term = q["TermLength"];
+    premium.amount = q["MonthlyPremium"];
+    premiums = quoteHash[q["FaceAmount"].toString()] || {};
+    premiums[premium.id] = premium;
+    quoteHash[q["FaceAmount"].toString()] = premiums;
+  }
+
+  var quotes = [];
+  for (var q in quoteHash) {
+    var returnQuote = {coverageAmount: q, premiums: { monthly: [] }};
+    for (var p in quoteHash[q]) {
+      returnQuote.premiums.monthly.push(quoteHash[q][p]);
+    }
+    quotes.push(returnQuote);
+  }
+  return quotes;
+};
+
+getQuotesFromFlaService = function(clientRequest, clientResponse) {
+  var options = {
+    hostname: 'efintest.com',
+    port: 443,
+    path: '/flaquotingservice/api/quote/?authcode=3ace31a2-1482-4062-91fc-a3d7df4059aa',
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8'
+    }
+  };
+
+  var req = https.request(options, function(res) {
+    console.log("statusCode: ", res.statusCode);
+    console.log("headers: ", res.headers);
+
+    if (200 != res.statusCode) {
+      clientResponse.redirect('/quotes/quotes.json');
+    }
+    else {
+      res.on('data', function(responseData) {
+        clientResponse.send(transform(responseData));
+      });
+    }
+  });
+
+  req.on('error', function(e) {
+    console.log("error");
+    console.error(e);
+    clientResponse.redirect('/quotes/quotes.json');
+  });
+
+  req.write(JSON.stringify(clientRequest) + "\n");
+  req.end();
+};
 
 app.listen(port);
 console.log('Now serving http://localhost:'+port+'/index.html');
