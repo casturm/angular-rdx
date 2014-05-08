@@ -41,7 +41,7 @@
       <li ng-class="{ active: $state.current.name == 'about' }"><a ui-sref="about">About</a></li>
     </ul>
     <div class="navbar-right">
-      <p ng-if="user.name" class="navbar-text">Signed in as {{user.name}} </p>
+      <p ng-if="$state.includes('cases') && user.name" class="navbar-text">Signed in as {{user.name}} </p>
     </div>
     </nav>
 
