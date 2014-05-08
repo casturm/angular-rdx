@@ -1,5 +1,5 @@
 angular.module('rdx.auth', ['ui.router','http-auth-interceptor']);
-angular.module('rdx.users', []);
+angular.module('rdx.users', ['ui.bootstrap']);
 angular.module('rdx.home', []);
 angular.module('rdx.cases', ['ui.router']);
 angular.module('rdx.interview', ['ui.router']);

@@ -1,6 +1,6 @@
 angular.module('rdx.users')
 
-.controller('UserController', ['$scope', 'AuthService', function($scope, AuthService) {
+.controller('UserController1', ['$scope', 'AuthService', function($scope, AuthService) {
   $scope.message = '';
   $scope.submitted = false;
 
