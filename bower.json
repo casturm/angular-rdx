@@ -1,7 +1,7 @@
 {
   "name": "angular-rdx",
   "description": "An example project using AngularJS",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/casturm/angular-rdx",
   "license": "none",
   "private": true,
@@ -10,9 +10,8 @@
     "angular-animate": "~1.2.x",
     "angular-mocks": "~1.2.x",
     "angular-http-auth": "~1.2.x",
-    "bootstrap": "~3.1.1",
-    "angular-ui-date": "latest",
-    "angular-ui-router": "0.2.10",
-    "jquery-ui-bootstrap": "latest"
+    "angular-bootstrap": "~0.11.x",
+    "bootstrap-css-only": "~3.1.x",
+    "angular-ui-router": "~0.2.x"
   }
 }

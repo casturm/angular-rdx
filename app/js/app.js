@@ -15,7 +15,7 @@ angular.module('rdx', [
   'ui.router',
   'http-auth-interceptor',
   'ngAnimate',
-  'ui.date'
+  'ui.bootstrap'
 ])
 
 .run(['$rootScope', '$state', '$stateParams', function ($rootScope,   $state,   $stateParams) {

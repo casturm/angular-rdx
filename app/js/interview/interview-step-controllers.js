@@ -16,7 +16,21 @@ angular.module('rdx.interview')
     $scope.save(isValid, 'interview.step2');
   };
 
-  //$scope.interview.birthdate = "01/21/1974";
+  $scope.datepickerConfig = {
+    showWeeks: false
+  };
+
+  $scope.datepickerPopupConfig = {
+    datepickerPopup: 'dd/MM/yyyy',
+    showButtonBar: false
+  };
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
 }])
 
 .controller('InterviewStep2Controller', ['$scope', function($scope) {

@@ -35,7 +35,12 @@
 
     <div class="col-md-6">
       <label class="control-label">Birthdate</label>
-      <input class="form-control" ui-date ui-date-format="mm/dd/yy" name="birthdate" ng-model="interview.birthdate">
+      <p class="input-group">
+      <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" init-date="'01/01/1940'" min-date="'01/01/1941'" show-button-bar="false" datepicker-options="datepickerConfig" ng-model="interview.birthdate" is-open="opened" ng-required="true" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+      </p>
     </div>
   </div>
 
