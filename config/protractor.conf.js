@@ -1,17 +1,15 @@
 var baseUrl = 'http://localhost:8000';
 
 exports.config = {
-  // The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
 
-  // Capabilities to be passed to the webdriver instance.
   capabilities: {
     'browserName': 'chrome'
   },
 
   suites: {
-    cases: '../test/e2e/cases.js',
-    interview: '../test/e2e/interview.js'
+    cases: '../test/e2e/scenarios/cases.js',
+    interview: '../test/e2e/scenarios/interview.js',
+    home: '../test/e2e/scenarios/home.js'
   },
 
   // Options to be passed to Jasmine-node.
@@ -38,19 +36,9 @@ exports.config = {
     browser.driver.manage().window().setSize(998, 800);
 
     browser.driver.get(baseUrl + '/#/login');
-
-    browser.driver.wait(function() {
-      return browser.driver.findElement(by.name('username')).isDisplayed();
-    }, 1000);
-
-    // can't access params here ;(
+    // can't access browser.params here ;(
     browser.driver.findElement(by.name('username')).sendKeys('admin');
     browser.driver.findElement(by.name('password')).sendKeys('doit');
     browser.driver.findElement(by.id('login-button')).click();
-
-    // wait for login to complete
-    browser.driver.wait(function() {
-      return browser.driver.findElement(by.name('start')).isDisplayed();
-    }, 1000);
   }
 };
