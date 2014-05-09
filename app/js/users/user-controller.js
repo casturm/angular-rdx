@@ -1,8 +1,39 @@
 angular.module('rdx.users')
 
-.controller('UserController1', ['$scope', 'AuthService', function($scope, AuthService) {
+.controller('LoginController', ['$rootScope', '$scope', '$modal', function($rootScope, $scope, $modal) {
+
+  $scope.user = {};
+
+  $rootScope.$on('event:auth-loginRequired', function() {
+    console.log('loginRequired');
+    show();
+  });
+
+  show = function() {
+    var modalInstance = $modal.open({
+      templateUrl: 'loginModalContent.html',
+      controller: 'LoginModalController',
+      resolve: {
+        user: function () {
+          return $scope.user;
+        }
+      }
+    });
+
+    modalInstance.result.then(function () {
+      console.log('Modal closed at: ' + new Date());
+    }, function () {
+      console.log('Modal dismissed at: ' + new Date());
+      $scope.$state.go('home');
+    });
+  };
+}])
+
+.controller('LoginModalController', ['$scope', '$modalInstance', 'AuthService', 'user', function($scope, $modalInstance, AuthService, user) {
   $scope.message = '';
   $scope.submitted = false;
+
+  $scope.user = user;
 
   $scope.submit = function(isValid) {
     $scope.submitted = true;
@@ -22,6 +53,7 @@ angular.module('rdx.users')
   success = function(resp) {
     console.log('AuthService.authenticate success resp: ' + angular.toJson(resp));
     $scope.submitted = false;
+    $modalInstance.close();
   };
 
   error = function(resp) {
@@ -32,5 +64,4 @@ angular.module('rdx.users')
     }
   };
 }]);
-
 
