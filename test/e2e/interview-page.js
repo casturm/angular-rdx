@@ -13,6 +13,9 @@ var InterviewPage = function() {
   this.riskNoOption = element(by.name('risk_taker_no'));
   this.riskKind = element(by.name('risk_kind'));
 
+  this.sportsYesOption = element(by.name('sports_yes'));
+  this.sportsNoOption = element(by.name('sports_no'));
+
   this.aliveYesOption = element(by.name('alive_yes'));
   this.aliveNoOption = element(by.name('alive_no'));
 

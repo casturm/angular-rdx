@@ -11,10 +11,6 @@ describe('rdx.home.HomeController', function() {
     $provide.value('Interview', Interview);
   }));
 
-  beforeEach(inject(function($rootScope, $state, $controller) {
-    scope = $rootScope.$new();
-  }));
-
   beforeEach(inject(function($rootScope, $q, $state, $controller) {
     var deferred = $q.defer();
     rootScope = $rootScope;

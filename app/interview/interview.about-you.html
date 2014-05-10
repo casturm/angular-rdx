@@ -1,0 +1,73 @@
+<form name="form" ng-submit="saveAboutYou(form.$valid)" novalidate>
+
+  <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.risk_taker) }">
+    <label class="control-label">Are You a Risk Taker</label>
+
+    <div class="col-sm-offset-1">
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
+          Not Really
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='Yes' name="risk_taker_yes" ng-model='interview.risk_taker' autocomplete='off'>
+          Big Time!
+        </label>
+      </div>
+      <p ng-show="submitted && !(form.risk_taker_no.checked || form.risk_taker_yes.checked)" class="help-block">Your answer is required</p>
+    </div>
+  </div>
+
+  <div ng-show="interview.risk_taker == 'Yes'">
+    <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_kind.$invalid }">
+      <label class="control-label">What kind of risky behaviours are you involved in?</label>
+      <input type="text" name="risk_kind" class="form-control" ng-model="interview.risk_kind" ng-required="interview.risk_taker == 'Yes'">
+      <p ng-show="submitted && form.risk_kind.$error.required" class="help-block">Please answer the question</p>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.sports) }">
+    <label class="control-label">Do you like sports?</label>
+
+    <div class="col-sm-offset-1">
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='No' name="sports_no" ng-model='interview.sports' autocomplete='off'>
+          Not Really
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='Yes' name="sports_yes" ng-model='interview.sports' autocomplete='off'>
+          Big Time!
+        </label>
+      </div>
+      <p ng-show="submitted && !(form.sports_no.checked || form.sports_yes.checked)" class="help-block">Your answer is required</p>
+    </div>
+  </div>
+
+  <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.alive) } ">
+    <label class="control-label">Are You Alive?</label>
+
+    <div class="col-sm-offset-1">
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='Yes' name="alive_yes" ng-model='interview.alive' autocomplete='off'>
+          Yes
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
+          No
+        </label>
+      </div>
+      <p ng-show="submitted && !(form.alive_no.checked || form.alive_yes.checked)" class="help-block">Alive answer is required</p>
+    </div>
+  </div>
+
+ <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
+</form>
+

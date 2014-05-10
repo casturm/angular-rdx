@@ -13,7 +13,7 @@ angular.module('rdx.interview')
     if (angular.isDefined($scope.phone_number) && $scope.phone_number.length == 10) {
       $scope.interview.phone_number = $scope.phone_number;
     }
-    $scope.save(isValid, 'interview.step2');
+    $scope.save(isValid, 'interview.about-you');
   };
 
   $scope.datepickerConfig = {
@@ -33,7 +33,11 @@ angular.module('rdx.interview')
   };
 }])
 
-.controller('InterviewStep2Controller', ['$scope', function($scope) {
+.controller('InterviewBeneController', ['$scope', function($scope) {
+
+  $scope.saveBene = function(isValid) {
+    $scope.save(isValid, 'interview.review');
+  }
 
   $scope.types = [
     {name: 'Person', value: 'person'},
@@ -47,15 +51,30 @@ angular.module('rdx.interview')
   });
 }])
 
-.controller('InterviewStep4Controller', ['$scope', 'Quotes', function($scope, Quotes) {
+.controller('InterviewAboutYouController', ['$scope', function($scope) {
 
-  $scope.finish = function(isValid) {
+  $scope.saveAboutYou = function(isValid) {
     if ($scope.interview.alive == 'No') {
       $scope.save(isValid, 'nothanks');
     }
-    else {
-      $scope.save(isValid, 'thankyou');
+    else if (angular.isDefined($scope.interview.alive) &&
+        angular.isDefined($scope.interview.sports) &&
+        angular.isDefined($scope.interview.risk_taker)) {
+      $scope.save(isValid, 'interview.quote');
     }
+  };
+}])
+
+.controller('InterviewReviewController', ['$scope', function($scope) {
+  $scope.finish = function(isValid) {
+    $scope.save(isValid, 'thankyou');
+  };
+}])
+
+.controller('InterviewQuoteController', ['$scope', 'Quotes', function($scope, Quotes) {
+
+  $scope.saveQuote = function(isValid) {
+    $scope.save(isValid, 'interview.bene');
   };
 
   Quotes.getQuotes().then(function(quotes) {

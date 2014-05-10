@@ -27,7 +27,7 @@ describe('rdx.interview.InterviewController', function() {
       angular.forEach(scope.breadcrumbs, function(crumb) {
         crumbs.push(crumb.breadcrumb);
       }, crumbs);
-      expect(crumbs).toEqual(['Who Are You?','Who Wins?','About You','More About You', 'Your Quote']);
+      expect(crumbs).toEqual(['Who Are You?','About You','Your Quote','Who Wins?','Review']);
     });
 
     it('should define a save method', function() {

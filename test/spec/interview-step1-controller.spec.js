@@ -36,7 +36,7 @@ describe('rdx.interview.InterviewStep1Controller', function() {
       scope.phone_number = '1234567890';
       spyOn(scope, 'save');
       scope.savePersonalInfo(true);
-      expect(scope.save).toHaveBeenCalledWith(true, 'interview.step2');
+      expect(scope.save).toHaveBeenCalledWith(true, 'interview.about-you');
     });
   });
 });

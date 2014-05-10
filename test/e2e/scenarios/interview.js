@@ -18,18 +18,20 @@ describe('Interview Page', function() {
     interviewPage.birthdate.sendKeys('01/21/1974');
     interviewPage.nextButton.click();
 
-    interviewPage.trustOption.click();
-    interviewPage.trustName.sendKeys('Trusty Trust Fund');
-    interviewPage.nextButton.click();
-
     interviewPage.riskYesOption.click();
     interviewPage.riskKind.sendKeys('rock climbing');
-    interviewPage.nextButton.click();
-
+    interviewPage.sportsYesOption.click();
     interviewPage.aliveYesOption.click();
     interviewPage.nextButton.click();
 
     interviewPage.gridPremiumOption('25000_15').click();
+    interviewPage.nextButton.click();
+
+    interviewPage.trustOption.click();
+    interviewPage.trustName.sendKeys('Trusty Trust Fund');
+    interviewPage.nextButton.click();
+
+    //review
     interviewPage.nextButton.click();
 
     expect(interviewPage.jumbotronHeading.getText()).toEqual('Thank You!');
@@ -44,18 +46,10 @@ describe('Interview Page', function() {
     interviewPage.birthdate.sendKeys('01/21/1974');
     interviewPage.nextButton.click();
 
-    interviewPage.trustOption.click();
-    interviewPage.trustName.sendKeys('Trusty Trust Fund');
-    interviewPage.nextButton.click();
-
     interviewPage.riskYesOption.click();
     interviewPage.riskKind.sendKeys('rock climbing');
-    interviewPage.nextButton.click();
-
+    interviewPage.sportsYesOption.click();
     interviewPage.aliveNoOption.click();
-    interviewPage.nextButton.click();
-
-    interviewPage.gridPremiumOption('25000_15').click();
     interviewPage.nextButton.click();
 
     expect(interviewPage.jumbotronHeading.getText()).toEqual('You Are Dead!');

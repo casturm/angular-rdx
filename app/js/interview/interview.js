@@ -27,14 +27,14 @@ angular.module('rdx.interview')
         }
       })
 
-      .state('interview.step2', {
+      .state('interview.bene', {
         url: '',
         breadcrumb: 'Who Wins?',
         pageHeader: "Who Gets Your Stuff?",
         views: {
           '': {
-            templateUrl: 'interview/interview.step2.html',
-            controller: 'InterviewStep2Controller'
+            templateUrl: 'interview/interview.bene.html',
+            controller: 'InterviewBeneController'
           },
 
           'hint@': {
@@ -43,13 +43,14 @@ angular.module('rdx.interview')
         }
       })
 
-      .state('interview.step3', {
+      .state('interview.about-you', {
         url: '',
         breadcrumb: 'About You',
         pageHeader: "Tell Us About Yourself",
         views: {
           '': {
-            templateUrl: 'interview/interview.step3.html'
+            templateUrl: 'interview/interview.about-you.html',
+            controller: 'InterviewAboutYouController'
           },
 
           'hint@': {
@@ -58,17 +59,18 @@ angular.module('rdx.interview')
         }
       })
 
-      .state('interview.step4', {
+      .state('interview.review', {
         url: '',
-        breadcrumb: 'More About You',
-        pageHeader: "Still More About You",
+        breadcrumb: 'Review',
+        pageHeader: "Let's Review",
         views: {
           '': {
-            templateUrl: 'interview/interview.step4.html'
+            templateUrl: 'interview/interview.review.html',
+            controller: 'InterviewReviewController'
           },
 
           'hint@': {
-            template: 'One more question ... we promise.'
+            template: 'Time to review your information and submit your application.'
           }
         }
       })
@@ -80,7 +82,7 @@ angular.module('rdx.interview')
         views: {
           '': {
             templateUrl: 'interview/interview.quote.html',
-            controller: 'InterviewStep4Controller'
+            controller: 'InterviewQuoteController'
           },
 
           'hint@': {

@@ -1,4 +1,4 @@
-describe('rdx.interview.InterviewStep2Controller', function() {
+describe('rdx.interview.InterviewBeneController', function() {
   var scope;
 
   beforeEach(module('rdx.interview'));
@@ -6,8 +6,19 @@ describe('rdx.interview.InterviewStep2Controller', function() {
   beforeEach(inject(function($rootScope, $controller) {
     scope = $rootScope.$new();
     scope.interview = {};
-    $controller('InterviewStep2Controller', {$scope: scope});
+    scope.save = function(isValid) {};
+    $controller('InterviewBeneController', {$scope: scope});
   }));
+
+  it('should assign saveBene function', function() {
+    expect(scope.saveBene).toBeDefined();
+  });
+
+  it('should call save correctly', function() {
+    spyOn(scope, 'save');
+    scope.saveBene(true);
+    expect(scope.save).toHaveBeenCalledWith(true, 'interview.review');
+  });
 
   it('should assign types', function() {
     expect(scope.types).toEqual([
@@ -24,7 +35,7 @@ describe('rdx.interview.InterviewStep2Controller', function() {
 
     beforeEach(inject(function($controller) {
       scope.interview.beneficiary_type = 'trust';
-      $controller('InterviewStep2Controller', {$scope: scope});
+      $controller('InterviewBeneController', {$scope: scope});
     }));
 
     it('should assign beneficiary_type when a matching value is found is types', function() {

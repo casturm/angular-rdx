@@ -1,4 +1,4 @@
-describe('rdx.interview.InterviewStep4Controller', function() {
+describe('rdx.interview.InterviewQuoteController', function() {
   var scope;
   var quotes = [{
       coverageAmount: "25000",
@@ -36,29 +36,21 @@ describe('rdx.interview.InterviewStep4Controller', function() {
     var deferred = $q.defer();
     scope = $rootScope.$new();
     scope.interview = {};
-    scope.save = function(isValid, nextStep) {}
+    scope.save = function(isValid) {};
 
     deferred.resolve(quotes);
     spyOn(Quotes, 'getQuotes').andReturn(deferred.promise);
-    $controller('InterviewStep4Controller', {$scope: scope, Quotes: Quotes});
+    $controller('InterviewQuoteController', {$scope: scope, Quotes: Quotes});
   }));
 
-  it('should assign finish method', function() {
-    expect(scope.finish).toBeDefined();
+  it('should assign saveQuote function', function() {
+    expect(scope.saveQuote).toBeDefined();
   });
 
-  it('should call save correctly when interview.alive == "No"', function() {
-    scope.interview.alive = 'No';
+  it('should call save correctly', function() {
     spyOn(scope, 'save');
-    scope.finish(true);
-    expect(scope.save).toHaveBeenCalledWith(true, 'nothanks');
-  });
-
-  it('should call save correctly when interview.alive == "Yes"', function() {
-    scope.interview.alive = 'Yes';
-    spyOn(scope, 'save');
-    scope.finish(true);
-    expect(scope.save).toHaveBeenCalledWith(true, 'thankyou');
+    scope.saveQuote(true);
+    expect(scope.save).toHaveBeenCalledWith(true, 'interview.bene');
   });
 
   it('should have a function $scope.activate(p) set interview.selectedPremium = p', function() {
