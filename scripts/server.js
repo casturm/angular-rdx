@@ -97,18 +97,35 @@ app.put('/api/interview', function(req, res){
   jsonBody(req, res, send)
 });
 
-app.get('/api/quotes', function(req, res){
+app.get('/api/quotes/:id', function(req, res){
+  var post_dob = '01/21/1974';
+  var gender = 'male';
+  var tobacoo = false;
+  if (req.params.id != {}) {
+    interview = cases[req.params.id];
+    var dob = new Date(interview.birthdate)
+    if (dob != undefined) {
+      console.log("dob: " + dob);
+      post_dob = (dob.getMonth() + 1) + "/" + dob.getDate() + "/" + dob.getFullYear();
+      console.log("post_dob: " + post_dob);
+    }
+    gender = interview.sports == 'Yes' ? 'male' : 'female';
+    tobacco = interview.risk_taker == 'Yes' ? true : false;
+  }
+
   var request = {
     FaceAmountIncrement: 25000,
     FaceAmountMin: 25000,
     FaceAmountMax: 250000,
     PlanCode: [ "RDEXPT1" ],
     TermLength: [10, 15, 20, 30],
-    DOB: "01/21/1974",
+    DOB: post_dob,
     State: "OR",
-    Tobacco: "false",
-    Gender: "male"
+    Tobacco: tobacco,
+    Gender: gender
   };
+
+  console.log('quote requesst: ' + JSON.stringify(request));
 
   getQuotesFromFlaService(request, res);
 });
@@ -156,7 +173,7 @@ getQuotesFromFlaService = function(clientRequest, clientResponse) {
     console.log("statusCode: ", res.statusCode);
     console.log("headers: ", res.headers);
 
-    if (200 != res.statusCode) {
+    if (200 != res.statusCode && res != []) {
       clientResponse.redirect('/quotes/quotes.json');
     }
     else {
