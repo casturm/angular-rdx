@@ -36,10 +36,12 @@
     <div class="col-md-6" ng-class="{ 'has-error' : submitted && form.birthdate.$invalid }">
       <label class="control-label">Birthdate</label>
       <p class="input-group">
-      <input type="text" class="form-control" name="birthdate" ng-model="interview.birthdate" datepicker-popup="dd/MM/yyyy" init-date="'01/01/1940'" min-date="'01/01/1941'" show-button-bar="false" datepicker-options="datepickerConfig" is-open="opened" ng-required="true" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
+        <input type="text" class="form-control" name="birthdate" ng-model="interview.birthdate"
+          datepicker-popup="MM/dd/yyyy" init-date="'01/01/1940'" min-date="'01/01/1941'" max-date="'01/01/1980'" show-button-bar="false"
+          datepicker-options="datepickerPopupConfig" is-open="opened" ng-required="true" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
       </p>
       <p ng-show="submitted && form.birthdate.$error.required" class="help-block">Your birthdate is required.</p>
     </div>

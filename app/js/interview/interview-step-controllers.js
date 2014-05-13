@@ -16,13 +16,8 @@ angular.module('rdx.interview')
     $scope.save(isValid, 'interview.about-you');
   };
 
-  $scope.datepickerConfig = {
-    showWeeks: false
-  };
-
   $scope.datepickerPopupConfig = {
-    datepickerPopup: 'dd/MM/yyyy',
-    showButtonBar: false
+    showWeeks: false
   };
 
   $scope.open = function($event) {
@@ -61,6 +56,9 @@ angular.module('rdx.interview')
         angular.isDefined($scope.interview.sports) &&
         angular.isDefined($scope.interview.risk_taker)) {
       $scope.save(isValid, 'interview.quote');
+    }
+    else {
+      $scope.save(false, 'none');
     }
   };
 }])

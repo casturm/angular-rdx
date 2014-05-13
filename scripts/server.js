@@ -173,14 +173,10 @@ getQuotesFromFlaService = function(clientRequest, clientResponse) {
     console.log("statusCode: ", res.statusCode);
     console.log("headers: ", res.headers);
 
-    if (200 != res.statusCode && res != []) {
-      clientResponse.redirect('/quotes/quotes.json');
-    }
-    else {
-      res.on('data', function(responseData) {
-        clientResponse.send(transform(responseData));
-      });
-    }
+    res.on('data', function (data) {
+      console.log('data: ', JSON.parse(data));
+      clientResponse.send(transform(data));
+    });
   });
 
   req.on('error', function(e) {

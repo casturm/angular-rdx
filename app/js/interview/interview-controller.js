@@ -29,7 +29,11 @@ angular.module('rdx.interview')
 
   $scope.pageHeader = function() {
     return $scope.$state.current.pageHeader;
-  }
+  };
+
+  $scope.isUndefined = function(value) {
+    return angular.isUndefined(value);
+  };
 }]);
 
 
