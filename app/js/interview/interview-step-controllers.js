@@ -61,6 +61,10 @@ angular.module('rdx.interview')
       $scope.save(false, 'none');
     }
   };
+
+  $scope.clickRadio = function(model, value) {
+    model = value;
+  };
 }])
 
 .controller('InterviewReviewController', ['$scope', function($scope) {

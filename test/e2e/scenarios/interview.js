@@ -15,7 +15,7 @@ describe('Interview Page', function() {
     interviewPage.phoneArea.sendKeys('303');
     interviewPage.phoneExchange.sendKeys('244');
     interviewPage.phoneSubscriber.sendKeys('9076');
-    interviewPage.birthdate.sendKeys('01/21/1974');
+    interviewPage.birthdate.sendKeys('01/21/2005');
     interviewPage.nextButton.click();
 
     interviewPage.riskYesOption.click();
@@ -43,7 +43,7 @@ describe('Interview Page', function() {
     interviewPage.phoneArea.sendKeys('303');
     interviewPage.phoneExchange.sendKeys('244');
     interviewPage.phoneSubscriber.sendKeys('9076');
-    interviewPage.birthdate.sendKeys('01/21/1974');
+    interviewPage.birthdate.sendKeys('01/21/2005');
     interviewPage.nextButton.click();
 
     interviewPage.riskYesOption.click();

@@ -18,6 +18,10 @@ describe('rdx.interview.InterviewController', function() {
       scope = $rootScope.$new();
       scope.interview = {};
       scope.$state = $state;
+      scope.$state.current = {
+        pageTitle: 'I am a page title',
+        pageLine: 'I am a page line'
+      };
       $controller('InterviewController', {$scope: scope, Interview: Interview});
     }));
 
@@ -27,28 +31,20 @@ describe('rdx.interview.InterviewController', function() {
       angular.forEach(scope.breadcrumbs, function(crumb) {
         crumbs.push(crumb.breadcrumb);
       }, crumbs);
-      expect(crumbs).toEqual(['Who Are You?','About You','Your Quote','Who Wins?','Review']);
+      expect(crumbs).toEqual([ 'About You', 'Lifestyle', 'Your Quote', 'Beneficiaries', 'Review' ]);
     });
 
     it('should define a save method', function() {
       expect(angular.isFunction(scope.save)).toBe(true);
     });
 
-    it('should define a pageHeader method', function() {
-      expect(angular.isFunction(scope.pageHeader)).toBe(true);
+    it('should define a pageTitle', function() {
+      expect(scope.pageTitle()).toEqual('I am a page title');
     });
-  });
 
-  describe('functions', function() {
-
-    beforeEach(inject(function($rootScope, $state, $controller) {
-      scope = $rootScope.$new();
-      scope.$state = $state;
-      scope.$state.current = {
-        pageHeader: 'I am a page header'
-      };
-      $controller('InterviewController', {$scope: scope, Interview: Interview});
-    }));
+    it('should define a pageLine', function() {
+      expect(scope.pageLine()).toEqual('I am a page line');
+    });
 
     it('should set submitted true and not do anything else when save(false, "nextStep") is called', function() {
       scope.save(false, 'nextStep');
@@ -64,10 +60,6 @@ describe('rdx.interview.InterviewController', function() {
       expect(Interview.save).toHaveBeenCalled();
       expect(scope.$state.go).toHaveBeenCalledWith('nextStep');
       expect(scope.submitted).toBe(false);
-    });
-
-    it('should return the current pageHeader when pageHeader() is called', function() {
-      expect(scope.pageHeader()).toEqual('I am a page header');
     });
   });
 });

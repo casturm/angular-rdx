@@ -1,5 +1,30 @@
-<form name="form" ng-submit="finish(form.$valid)" novalidate>
+<form name="form" class="form form-horizontal" ng-submit="finish(form.$valid)" novalidate>
 
-  <button type="submit" name="next" class="btn btn-primary btn-lg">Finish!</button>
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 for="selectedQuote">Choose an Amount</h4>
+      <select class="form-control" id="selectedQuote" ng-model="interview.selectedQuote" ng-options="quote as quote.coverageAmount for quote in quotes" required>
+        <option value="">Coverage Amount</option>
+      </select>
+    </div>
+    <div class="col-sm-6">
+      <h4 for="selectedPremium">Choose a Term</h4>
+      <select class="form-control" id="selectedPremium" name="selectedPremium" ng-model="interview.selectedPremium" ng-options="premium as premium.term for premium in interview.selectedQuote.premiums.monthly" required>
+        <option value="">Term</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <h4>Your Premium</h4>
+      <div class="well text-center">
+        <span ng-show="interview.selectedPremium"><h2>$ {{interview.selectedPremium.amount}}</h2></span>
+        <span ng-show="!interview.selectedPremium"><h2> $ --.-- </h2></span>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" name="next" class="btn btn-primary btn-lg pull-right">Finish!</button>
+
 </form>
 

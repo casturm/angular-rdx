@@ -175,7 +175,12 @@ getQuotesFromFlaService = function(clientRequest, clientResponse) {
 
     res.on('data', function (data) {
       console.log('data: ', JSON.parse(data));
-      clientResponse.send(transform(data));
+      if (JSON.parse(data).length == 0) {
+        clientResponse.redirect('/quotes/quotes.json');
+      }
+      else {
+        clientResponse.send(transform(data));
+      }
     });
   });
 

@@ -27,8 +27,12 @@ angular.module('rdx.interview')
     }
   };
 
-  $scope.pageHeader = function() {
-    return $scope.$state.current.pageHeader;
+  $scope.pageTitle = function() {
+    return $scope.$state.current.pageTitle;
+  };
+
+  $scope.pageLine = function() {
+    return $scope.$state.current.pageLine;
   };
 
   $scope.isUndefined = function(value) {

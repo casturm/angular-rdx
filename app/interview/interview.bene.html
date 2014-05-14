@@ -1,7 +1,8 @@
-<form name="form" ng-submit="saveBene(form.$valid)" novalidate>
+<form name="form" class="form form-hoizontal" ng-submit="saveBene(form.$valid)" novalidate>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && form.type.$invalid }">
-    <label class="control-label">Is the Beneficiary a Person or a Trust?</label>
+    <h2>Primary Beneficiary</h2>
+    <label class="control-label">Pay my life insurance benefits to</label>
     <select name="type" class="form-control" ng-model="interview.beneficiary_type" ng-options="t as t.name for t in types track by t.value" required>
       <option value="">-- choose Beneficiary --</option>
     </select>
@@ -24,6 +25,32 @@
     </div>
   </div>
 
-  <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
+  <div class="form-group" ng-class="{ 'has-error' : submitted && form.type2.$invalid }">
+    <h2>Contingent Beneficiary</h2>
+    <label class="control-label">Pay my life insurance benefits to (Optional)</label>
+    <select name="type" class="form-control" ng-model="interview.beneficiary_type2" ng-options="t as t.name for t in types track by t.value">
+      <option value="">-- choose Beneficiary --</option>
+    </select>
+    <p ng-show="submitted && form.type2.$error.required" class="help-block">Beneficiary Type is required</p>
+  </div>
+
+  <div ng-show="interview.beneficiary_type2.value == 'person'">
+    <div class="form-group" ng-class="{ 'has-error' : submitted && form.name2.$invalid }">
+      <label class="control-label">What is the person's name?</label>
+      <input type="text" name="name2" class="form-control" ng-model="interview.beneficiary_name2" ng-required="interview.beneficiary_type2.value == 'person'">
+      <p ng-show="submitted && form.beneficiary_name2.$error.required" class="help-block">You name is required.</p>
+    </div>
+  </div>
+
+  <div ng-show="interview.beneficiary_type2.value == 'trust'">
+    <div class="form-group" ng-class="{ 'has-error' : submitted && form.trust_name2.$invalid }">
+      <label class="control-label">What is name of the Trust?</label>
+      <input type="text" name="trust_name2" class="form-control" ng-model="interview.trust_name2" ng-required="interview.beneficiary_type2.value == 'trust'">
+      <p ng-show="submitted && form.trust_name2.$error.required" class="help-block">Trust name is required.</p>
+    </div>
+  </div>
+
+  <button type="submit" name="next" class="btn btn-primary btn-lg pull-right">Continue</button>
+
 </form>
 

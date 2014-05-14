@@ -1,73 +1,64 @@
-<form name="form" ng-submit="saveAboutYou(form.$valid)" novalidate>
+<form class="form form-horizontal" ng-submit="saveAboutYou(form.$valid)" novalidate>
+
+  <div class="form-group">
+    <div class="col-sm-12 question">Are You a Risk Taker.  Do you enjoy engaging in risky behaviors such as laughing or having fun?  Do you ever stay up lote or go to parties?  Are you the type of person that would step on ants or do you avoid them at all costs, preferring to live and let live?</div>
+  </div>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.risk_taker) }">
-    <label class="control-label">Are You a Risk Taker</label>
-
-    <div class="col-sm-offset-1">
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
-          Not Really
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='Yes' name="risk_taker_yes" ng-model='interview.risk_taker' autocomplete='off'>
-          Big Time!
-        </label>
-      </div>
-      <p ng-show="submitted && !(form.risk_taker_no.checked || form.risk_taker_yes.checked)" class="help-block">Your answer is required</p>
+    <div class="col-sm-3">
+      <input type='radio' class='boolean' value='Yes' name="risk_taker_yes" ng-model='interview.risk_taker' autocomplete='off'>
+      <label for="risk_taker_yes" ng-click="interview.risk_taker = 'Yes'">Yes</label>
     </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
+      <label for="risk_taker_no" ng-click="interview.risk_taker = 'No'">No</label>
+    </div>
+    <p ng-show="submitted && !(risk_taker_no.checked || risk_taker_yes.checked)" class="col-sm-12 fhelp-block">Your answer is required</p>
   </div>
 
   <div ng-show="interview.risk_taker == 'Yes'">
-    <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_kind.$invalid }">
-      <label class="control-label">What kind of risky behaviours are you involved in?</label>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && risk_kind.$invalid }">
+      <label>What kind of risky behaviours are you involved in?</label>
       <input type="text" name="risk_kind" class="form-control" ng-model="interview.risk_kind" ng-required="interview.risk_taker == 'Yes'">
-      <p ng-show="submitted && form.risk_kind.$error.required" class="help-block">Please answer the question</p>
+      <p ng-show="submitted && risk_kind.$error.required" class="help-block">Please answer the question</p>
     </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12 question">Do you like sports?  Did you used to play a sport and now are too old, but play anyway only to get hurt now and again rendering yourself useless to your family for some period of time while you recover?</div>
   </div>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.sports) }">
-    <label class="control-label">Do you like sports?</label>
-
-    <div class="col-sm-offset-1">
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='No' name="sports_no" ng-model='interview.sports' autocomplete='off'>
-          Not Really
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='Yes' name="sports_yes" ng-model='interview.sports' autocomplete='off'>
-          Big Time!
-        </label>
-      </div>
-      <p ng-show="submitted && !(form.sports_no.checked || form.sports_yes.checked)" class="help-block">Your answer is required</p>
+    <div class="col-sm-3">
+      <input type='radio' class='boolean' value='Yes' name="sports_yes" ng-model='interview.sports' autocomplete='off'>
+      <label for="sports_yes" ng-click="interview.sports  = 'Yes'">Yes</label>
     </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <input type='radio' class='boolean' value='No' name="sports_no" ng-model='interview.sports' autocomplete='off'>
+      <label for="sports_no" ng-click="interview.sports = 'No'">No</label>
+    </div>
+    <p ng-show="submitted && !(sports_no.checked || sports_yes.checked)" class="col-sm-12 help-block">Your answer is required</p>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12 question">Are you alive?  Do you engage in activites that feed your soul and make life worth living?  Or are you dead, bored with life and with one foot in the grave.  Please answer honestly.</div>
   </div>
 
   <div class="form-group" ng-class="{ 'has-error' : submitted && isUndefined(interview.alive) } ">
-    <label class="control-label">Are You Alive?</label>
-
-    <div class="col-sm-offset-1">
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='Yes' name="alive_yes" ng-model='interview.alive' autocomplete='off'>
-          Yes
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
-          No
-        </label>
-      </div>
-      <p ng-show="submitted && !(form.alive_no.checked || form.alive_yes.checked)" class="help-block">Your answer is required</p>
+    <div class="col-sm-3">
+      <input type='radio' class='boolean' value='Yes' name="alive_yes" ng-model='interview.alive' autocomplete='off'>
+      <label for="alive_yes" ng-click="interview.alive  = 'Yes'">Yes</label>
     </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
+      <label for="alive_no" ng-click="interview.alive = 'No'">No</label>
+    </div>
+    <p ng-show="submitted && !(alive_no.checked || alive_yes.checked)" class="col-sm-12 help-block">Your answer is required</p>
   </div>
 
- <button type="submit" name="next" class="btn btn-primary btn-lg">Next</button>
+  <div class="form-group">
+    <button type="submit" name="next" class="btn btn-primary btn-lg pull-right">Continue</button>
+  </div>
+
 </form>
 

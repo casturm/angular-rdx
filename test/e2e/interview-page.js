@@ -9,20 +9,20 @@ var InterviewPage = function() {
   this.trustOption = element(by.css('option[value="trust"]'));
   this.trustName = element(by.model('interview.trust_name'));
 
-  this.riskYesOption = element(by.name('risk_taker_yes'));
-  this.riskNoOption = element(by.name('risk_taker_no'));
+  this.riskYesOption = element(by.css('label[for="risk_taker_yes"]'));
+  this.riskNoOption = element(by.css('label[for="risk_taker_no"]'));
   this.riskKind = element(by.name('risk_kind'));
 
-  this.sportsYesOption = element(by.name('sports_yes'));
-  this.sportsNoOption = element(by.name('sports_no'));
+  this.sportsYesOption = element(by.css('label[for="sports_yes"]'));
+  this.sportsNoOption = element(by.css('label[for="sports_no"]'));
 
-  this.aliveYesOption = element(by.name('alive_yes'));
-  this.aliveNoOption = element(by.name('alive_no'));
+  this.aliveYesOption = element(by.css('label[for="alive_yes"]'));
+  this.aliveNoOption = element(by.css('label[for="alive_no"]'));
 
   this.gridPremiumOption = function(id) { return element(by.id(id)); };
 
   this.nextButton = element(by.name('next'));
-  this.jumbotronHeading = element(by.css('.jumbotron h1'));
+  this.jumbotronHeading = element(by.css('.jumbotron .text-center .top-bufffer .gradient h1'));
 };
 
 module.exports = new InterviewPage();

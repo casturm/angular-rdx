@@ -13,8 +13,9 @@ angular.module('rdx.interview')
 
       .state('interview.step1', {
         url: '',
-        breadcrumb: 'Who Are You?',
-        pageHeader: "Who Are You?",
+        breadcrumb: 'About You',
+        pageTitle: "Something About You",
+        pageLine: "Tell us a little about yourself to help us customize your coverage options",
         views: {
           '': {
             templateUrl: 'interview/interview.step1.html',
@@ -22,15 +23,16 @@ angular.module('rdx.interview')
           },
 
           'hint@': {
-            template: 'You can trust us.  Give us your personal identification information please.'
+            template: '<p>Before you begin, you may want to gather the following list to help you complete your application:</p>  <ul><li>Your name and birthdate</li><li>Your budget</li><li>Your beneficiaries</li>'
           }
         }
       })
 
       .state('interview.bene', {
         url: '',
-        breadcrumb: 'Who Wins?',
-        pageHeader: "Who Gets Your Stuff?",
+        breadcrumb: 'Beneficiaries',
+        pageTitle: "Who Gets Your Stuff?",
+        pageLine: "Tell us a little about the people you select to receive your policy benefit",
         views: {
           '': {
             templateUrl: 'interview/interview.bene.html',
@@ -38,15 +40,16 @@ angular.module('rdx.interview')
           },
 
           'hint@': {
-            template: 'We want your loved ones to benefit from your passing.  Tell us who gets the stuff.'
+            template: 'We want your loved ones to benefit from your passing.  Tell us who gets the stuff. You may also select a contingent beneficiary if you choose. Once your policy is in force you may make changes to your beneficiary selection at any time'
           }
         }
       })
 
       .state('interview.about-you', {
         url: '',
-        breadcrumb: 'About You',
-        pageHeader: "Tell Us About Yourself",
+        breadcrumb: 'Lifestyle',
+        pageTitle: "A Few Quick LifeStyle Questions",
+        pageLine: "This should only take a minute",
         views: {
           '': {
             templateUrl: 'interview/interview.about-you.html',
@@ -54,7 +57,7 @@ angular.module('rdx.interview')
           },
 
           'hint@': {
-            template: 'Tell us a little bit more about how you live your life.'
+            template: 'Tell us a little bit more about how you live your life. This should only take a minute. Please tell the truth.'
           }
         }
       })
@@ -62,7 +65,8 @@ angular.module('rdx.interview')
       .state('interview.review', {
         url: '',
         breadcrumb: 'Review',
-        pageHeader: "Let's Review",
+        pageTitle: "Please Review Your Coverage",
+        pageLine: "Confirm your coverage and payment frequency",
         views: {
           '': {
             templateUrl: 'interview/interview.review.html',
@@ -78,7 +82,8 @@ angular.module('rdx.interview')
       .state('interview.quote', {
         url: '',
         breadcrumb: 'Your Quote',
-        pageHeader: "Monthly Premiums",
+        pageTitle: "Choose Your Coverage",
+        pageLine: "Select your coverage amount, term length and premium",
         views: {
           '': {
             templateUrl: 'interview/interview.quote.html',
@@ -86,7 +91,7 @@ angular.module('rdx.interview')
           },
 
           'hint@': {
-            template: 'Think about it and pick a number.'
+            template: '<p>When selecting your coverage amount consider:</p> <ul> <li>your mortgage, outstanding debt</li> <li>living expenses for your dependents</li> <li>final expenses</li> </ul>'
           }
         }
       });
