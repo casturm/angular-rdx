@@ -15,7 +15,7 @@ describe('Interview Page', function() {
     interviewPage.phoneArea.sendKeys('303');
     interviewPage.phoneExchange.sendKeys('244');
     interviewPage.phoneSubscriber.sendKeys('9076');
-    interviewPage.birthdate.sendKeys('01/21/2005');
+    interviewPage.birthdate.sendKeys('01/21/1960');
     interviewPage.nextButton.click();
 
     interviewPage.riskYesOption.click();
@@ -24,7 +24,7 @@ describe('Interview Page', function() {
     interviewPage.aliveYesOption.click();
     interviewPage.nextButton.click();
 
-    interviewPage.gridPremiumOption('25000_15').click();
+    interviewPage.gridPremiumOption("100000_15").click();
     interviewPage.nextButton.click();
 
     interviewPage.trustOption.click();
@@ -38,16 +38,12 @@ describe('Interview Page', function() {
   });
 
   it('should walk me through the interview steps and take me to the thanksbutnothanks page', function() {
-    interviewPage.name.sendKeys('Jane Doe');
-    interviewPage.email.sendKeys('jane@rdx.com');
-    interviewPage.phoneArea.sendKeys('303');
-    interviewPage.phoneExchange.sendKeys('244');
-    interviewPage.phoneSubscriber.sendKeys('9076');
-    interviewPage.birthdate.sendKeys('01/21/2005');
+    interviewPage.name.sendKeys('John Dude');
+    interviewPage.birthdate.sendKeys('01/21/1955');
     interviewPage.nextButton.click();
 
     interviewPage.riskYesOption.click();
-    interviewPage.riskKind.sendKeys('rock climbing');
+    interviewPage.riskKind.sendKeys('playing with fire');
     interviewPage.sportsYesOption.click();
     interviewPage.aliveNoOption.click();
     interviewPage.nextButton.click();

@@ -58,6 +58,7 @@ angular.module('rdx.interview')
       $scope.save(isValid, 'interview.quote');
     }
     else {
+      console.log(angular.isDefined($scope.interview.alive) + ' ' + angular.isDefined($scope.interview.sports) + ' ' +  angular.isDefined($scope.interview.risk_taker))
       $scope.save(false, 'none');
     }
   };
@@ -79,45 +80,15 @@ angular.module('rdx.interview')
     $scope.save(isValid, 'interview.bene');
   };
 
-  Quotes.getQuotes().then(function(quotes) {
-    $scope.quotes = quotes;
-  });
-
-  $scope.activate = function(premium) {
-    $scope.interview.selectedPremium = premium;
-    console.log('activate: ' + angular.toJson(premium));
-  };
-
-  $scope.isActive = function(premium) {
-    console.log('isActive: ' + angular.toJson(premium));
-    return angular.isDefined($scope.interview.selectedPremium) && ($scope.interview.selectedPremium == premium);
+  if (angular.isUndefined($scope.interview.quotes)) {
+    Quotes.getQuotes().then(function(quotes) {
+      $scope.interview.quotes = quotes;
+    });
   }
 
+  // when the selected premium changes, set the selectedQuote to the matching premium
+  // so angular will find the right term option and sync the display properly
   $scope.$watch('interview.selectedPremium', function(newPremium, oldPremium) {
-    if (angular.isDefined(newPremium)) {
-      angular.forEach($scope.quotes, function(quote) {
-        angular.forEach(quote.premiums.monthly, function(premium) {
-          if (premium == newPremium) {
-            $scope.interview.selectedQuote = quote;
-            console.log("new selectedQuote: " + angular.toJson(quote));
-          }
-        });
-      });
-    }
-  });
-
-  $scope.$watch('interview.selectedQuote', function(newQuote, oldQuote) {
-    if (angular.isDefined(newQuote) && angular.isDefined($scope.interview.selectedPremium)) {
-      angular.forEach($scope.quotes, function(quote) {
-        if (quote == newQuote) {
-          angular.forEach(quote.premiums.monthly, function(premium) {
-            if ($scope.interview.selectedPremium.term == premium.term) {
-              $scope.interview.selectedPremium = premium;
-              console.log("new selectedPremium: " + angular.toJson(premium));
-            }
-          });
-        };
-      });
-    }
+    $scope.interview.selectedQuote = Quotes.getQuote(newPremium, $scope.interview.quotes)
   });
 }]);

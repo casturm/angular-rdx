@@ -44,17 +44,17 @@ angular.module('rdx', [
 
     .state('thankyou', {
       url: '/thankyou',
-      template: '<div class="jumbotron text-center top-buffer gradient" style="margin-bottom: 200px;"><h1>Thank You!</h1><p>Your loved ones will thank you too.</p></div>'
+      template: '<div class="jumbotron text-center top-buffer gradient"><h1>Thank You!</h1><p>Your loved ones will thank you too.</p></div>'
     })
 
     .state('nothanks', {
       url: '/thanksbutnothanks',
-      template: '<div class="jumbotron text-center top-buffer gradient" style="margin-bottom: 200px;"><h1>You Are Dead!</h1><p>Sorry, but we can\'t insure you at this time.</p></div>'
+      template: '<div class="jumbotron text-center top-buffer gradient"><h1>You Are Dead!</h1><p>Sorry, but we can\'t insure you at this time.</p></div>'
     })
 
     .state('about', {
       url: '/about',
-      template: '<div class="jumbotron text-center top-bufffer gradient" style="margin-bottom: 150px;"><h1>What Is This?</h1><p>This is an example app based on <a href="https://github.com/angular-ui/ui-router">Angular-UI-Router</a>, <a href="https://angularjs.org/">AngularJS</a>, and <a href="http://getbootstrap.com/">Bootstrap</a></p><p>The server is a simple <a href="http://nodejs.org/">NodeJS</a> app.</p><p>Checkout the code <a href="https://github.com/casturm/angular-rdx">Here</a></p></div>'
+      template: '<div class="jumbotron text-center top-bufffer gradient"><h1>What Is This?</h1><p>This is an example app based on <a href="https://github.com/angular-ui/ui-router">Angular-UI-Router</a>, <a href="https://angularjs.org/">AngularJS</a>, and <a href="http://getbootstrap.com/">Bootstrap</a></p><p>The server is a simple <a href="http://nodejs.org/">NodeJS</a> app.</p><p>Checkout the code <a href="https://github.com/casturm/angular-rdx">Here</a></p></div>'
     });
 }]);
 

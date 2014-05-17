@@ -44,10 +44,11 @@
         </span>
       </p>
       <p ng-show="submitted && form.birthdate.$error.required" class="help-block">Your birthdate is required.</p>
+      <p ng-show="submitted && form.birthdate.$invalid" class="help-block">Enter a valid birthdate.</p>
     </div>
   </div>
 
-  <button type="submit" name="next" class="btn btn-primary btn-lg">Continue</button>
+  <button type="submit" name="next" class="submit active pull-right">CONTINUE<span class="continueCaret"><img src="/images/continueCaret.png"></span></button>
 
 </form>
 

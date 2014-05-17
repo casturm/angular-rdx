@@ -20,6 +20,7 @@ angular.module('rdx.interview')
   $scope.save = function(isValid, nextStep) {
     $scope.submitted = true;
 
+    console.log('go to nextStep: ' + nextStep + ' isValid: ' + isValid)
     if (isValid) {
       Interview.save();
       $scope.submitted = false;

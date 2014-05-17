@@ -9,6 +9,20 @@ angular.module('rdx.quotes')
       return resp.data;
     });
   };
+  factory.getQuote = function(newPremium, quotes) {
+    var selectedQuote;
+    if (angular.isDefined(newPremium)) {
+      angular.forEach(quotes, function(quote) {
+        angular.forEach(quote.premiums.monthly, function(premium) {
+          if (premium == newPremium) {
+            selectedQuote = quote;
+            console.log("new selectedQuote: " + angular.toJson(selectedQuote));
+          }
+        });
+      }, selectedQuote);
+    }
+    return selectedQuote
+  }
   return factory;
 }]);
 

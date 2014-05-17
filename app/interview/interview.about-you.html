@@ -1,4 +1,4 @@
-<form class="form form-horizontal" ng-submit="saveAboutYou(form.$valid)" novalidate>
+<form name="form" class="form form-horizontal" ng-submit="saveAboutYou(form.$valid)" novalidate>
 
   <div class="form-group">
     <div class="col-sm-12 question">Are You a Risk Taker.  Do you enjoy engaging in risky behaviors such as laughing or having fun?  Do you ever stay up lote or go to parties?  Are you the type of person that would step on ants or do you avoid them at all costs, preferring to live and let live?</div>
@@ -13,14 +13,14 @@
       <input type='radio' class='boolean' value='No' name="risk_taker_no" ng-model='interview.risk_taker' autocomplete='off'>
       <label for="risk_taker_no" ng-click="interview.risk_taker = 'No'">No</label>
     </div>
-    <p ng-show="submitted && !(risk_taker_no.checked || risk_taker_yes.checked)" class="col-sm-12 fhelp-block">Your answer is required</p>
+    <p ng-show="submitted && isUndefined(interview.risk_taker)" class="col-sm-12 help-block">Your answer is required</p>
   </div>
 
   <div ng-show="interview.risk_taker == 'Yes'">
-    <div class="form-group" ng-class="{ 'has-error' : submitted && risk_kind.$invalid }">
+    <div class="form-group" ng-class="{ 'has-error' : submitted && form.risk_kind.$error.required }">
       <label>What kind of risky behaviours are you involved in?</label>
       <input type="text" name="risk_kind" class="form-control" ng-model="interview.risk_kind" ng-required="interview.risk_taker == 'Yes'">
-      <p ng-show="submitted && risk_kind.$error.required" class="help-block">Please answer the question</p>
+      <p ng-show="submitted && form.risk_kind.$error.required" class="help-block">Please answer the question</p>
     </div>
   </div>
 
@@ -37,7 +37,7 @@
       <input type='radio' class='boolean' value='No' name="sports_no" ng-model='interview.sports' autocomplete='off'>
       <label for="sports_no" ng-click="interview.sports = 'No'">No</label>
     </div>
-    <p ng-show="submitted && !(sports_no.checked || sports_yes.checked)" class="col-sm-12 help-block">Your answer is required</p>
+    <p ng-show="submitted && isUndefined(interview.sports)" class="col-sm-12 help-block">Your answer is required</p>
   </div>
 
   <div class="form-group">
@@ -53,12 +53,10 @@
       <input type='radio' class='boolean' value='No' name="alive_no" ng-model='interview.alive' autocomplete='off'>
       <label for="alive_no" ng-click="interview.alive = 'No'">No</label>
     </div>
-    <p ng-show="submitted && !(alive_no.checked || alive_yes.checked)" class="col-sm-12 help-block">Your answer is required</p>
+    <p ng-show="submitted && isUndefined(interview.alive)" class="col-sm-12 help-block">Your answer is required</p>
   </div>
 
-  <div class="form-group">
-    <button type="submit" name="next" class="btn btn-primary btn-lg pull-right">Continue</button>
-  </div>
+  <button type="submit" name="next" class="submit active pull-right">GET QUOTE<span class="continueCaret"><img src="/images/continueCaret.png"></span></button>
 
 </form>
 
