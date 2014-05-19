@@ -26,13 +26,13 @@ describe('rdx.home.HomeController', function() {
     expect(angular.isFunction(scope.start)).toBe(true);
   });
 
-  it('should start a new interview and go to step1 when start() is called', function() {
+  it('should start a new interview and go to about you when start() is called', function() {
     spyOn(scope.$state, 'go');
     scope.start();
 
     scope.$apply();
 
     expect(Interview.create).toHaveBeenCalled();
-    expect(scope.$state.go).toHaveBeenCalledWith('interview.step1');
+    expect(scope.$state.go).toHaveBeenCalledWith('interview.about-you');
   });
 });

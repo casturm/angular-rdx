@@ -1,4 +1,4 @@
-describe('rdx.interview.InterviewStep1Controller', function() {
+describe('rdx.interview.InterviewAboutYouController', function() {
   var scope;
 
   beforeEach(module('rdx.interview'));
@@ -6,7 +6,7 @@ describe('rdx.interview.InterviewStep1Controller', function() {
   beforeEach(inject(function($rootScope, $controller) {
     scope = $rootScope.$new();
     scope.interview = {};
-    $controller('InterviewStep1Controller', {$scope: scope});
+    $controller('InterviewAboutYouController', {$scope: scope});
   }));
 
   it('should assign phoneNumberParts method', function() {
@@ -23,19 +23,19 @@ describe('rdx.interview.InterviewStep1Controller', function() {
     expect(scope.phone_number).toEqual('2025438967');
   });
 
-  describe('scope.savePersonalInfo()', function() {
+  describe('scope.saveAboutYou()', function() {
     beforeEach(function() {
       scope.save = function() {}
     });
 
     it('should be defined', function() {
-      expect(scope.savePersonalInfo).toBeDefined();
+      expect(scope.saveAboutYou).toBeDefined();
     });
 
     it('should set interview.phone_number if scope.phone_number is defined', function() {
       scope.phone_number = '1234567890';
       spyOn(scope, 'save');
-      scope.savePersonalInfo(true);
+      scope.saveAboutYou(true);
       expect(scope.save).toHaveBeenCalledWith(true, 'interview.lifestyle');
     });
   });

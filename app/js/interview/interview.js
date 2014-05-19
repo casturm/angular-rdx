@@ -11,15 +11,15 @@ angular.module('rdx.interview')
         controller: 'InterviewController'
       })
 
-      .state('interview.step1', {
+      .state('interview.about-you', {
         url: '',
         breadcrumb: 'About You',
         pageTitle: "Something About You",
         pageLine: "Tell us a little about yourself to help us customize your coverage options",
         views: {
           '': {
-            templateUrl: 'interview/interview.step1.html',
-            controller: 'InterviewStep1Controller'
+            templateUrl: 'interview/interview.about-you.html',
+            controller: 'InterviewAboutYouController'
           },
 
           'hint@': {

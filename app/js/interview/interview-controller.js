@@ -10,7 +10,7 @@ angular.module('rdx.interview')
   $scope.submitted = false;
 
   $scope.breadcrumbs = [
-    $scope.$state.get('interview.step1'),
+    $scope.$state.get('interview.about-you'),
     $scope.$state.get('interview.lifestyle'),
     $scope.$state.get('interview.quote'),
     $scope.$state.get('interview.bene'),

@@ -1,6 +1,6 @@
 angular.module('rdx.interview')
 
-.controller('InterviewStep1Controller', ['$scope', function($scope) {
+.controller('InterviewAboutYouController', ['$scope', function($scope) {
 
   $scope.phone_parts = {};
 
@@ -9,7 +9,7 @@ angular.module('rdx.interview')
     return $scope.phone_number.length > 0 && $scope.phone_number.length != 10;
   };
 
-  $scope.savePersonalInfo = function(isValid) {
+  $scope.saveAboutYou = function(isValid) {
     if (angular.isDefined($scope.phone_number) && $scope.phone_number.length == 10) {
       $scope.interview.phone_number = $scope.phone_number;
     }
