@@ -13,7 +13,7 @@ angular.module('rdx.interview')
     if (angular.isDefined($scope.phone_number) && $scope.phone_number.length == 10) {
       $scope.interview.phone_number = $scope.phone_number;
     }
-    $scope.save(isValid, 'interview.about-you');
+    $scope.save(isValid, 'interview.lifestyle');
   };
 
   $scope.datepickerPopupConfig = {
@@ -46,9 +46,9 @@ angular.module('rdx.interview')
   });
 }])
 
-.controller('InterviewAboutYouController', ['$scope', function($scope) {
+.controller('InterviewLifestyleController', ['$scope', function($scope) {
 
-  $scope.saveAboutYou = function(isValid) {
+  $scope.saveLifestyle = function(isValid) {
     if ($scope.interview.alive == 'No') {
       $scope.save(isValid, 'nothanks');
     }

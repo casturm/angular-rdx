@@ -1,21 +1,21 @@
-describe('rdx.interview.InterviewAboutYouController', function() {
+describe('rdx.interview.InterviewLifestyleController', function() {
   beforeEach(module('rdx.interview'));
 
   beforeEach(inject(function($rootScope, $controller) {
     scope = $rootScope.$new();
     scope.interview = {};
     scope.save = function(isValid, nextStep) {}
-    $controller('InterviewAboutYouController', {$scope: scope});
+    $controller('InterviewLifestyleController', {$scope: scope});
   }));
 
-  it('should assign saveAboutYou function', function() {
-    expect(scope.saveAboutYou).toBeDefined();
+  it('should assign saveLifestyle function', function() {
+    expect(scope.saveLifestyle).toBeDefined();
   });
 
   it('should call save correctly when interview.alive == "No"', function() {
     scope.interview.alive = 'No';
     spyOn(scope, 'save');
-    scope.saveAboutYou(true);
+    scope.saveLifestyle(true);
     expect(scope.save).toHaveBeenCalledWith(true, 'nothanks');
   });
 
@@ -24,7 +24,7 @@ describe('rdx.interview.InterviewAboutYouController', function() {
     scope.interview.risk_taker = 'No';
     scope.interview.alive = 'Yes';
     spyOn(scope, 'save');
-    scope.saveAboutYou(true);
+    scope.saveLifestyle(true);
     expect(scope.save).toHaveBeenCalledWith(true, 'interview.quote');
   });
 });

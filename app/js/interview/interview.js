@@ -45,15 +45,15 @@ angular.module('rdx.interview')
         }
       })
 
-      .state('interview.about-you', {
+      .state('interview.lifestyle', {
         url: '',
         breadcrumb: 'Lifestyle',
         pageTitle: "A Few Quick LifeStyle Questions",
         pageLine: "This should only take a minute",
         views: {
           '': {
-            templateUrl: 'interview/interview.about-you.html',
-            controller: 'InterviewAboutYouController'
+            templateUrl: 'interview/interview.lifestyle.html',
+            controller: 'InterviewLifestyleController'
           },
 
           'hint@': {
