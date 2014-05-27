@@ -68,10 +68,17 @@ angular.module('rdx.interview')
   };
 }])
 
-.controller('InterviewReviewController', ['$scope', function($scope) {
+.controller('InterviewReviewController', ['$scope', 'Quotes', function($scope, Quotes) {
   $scope.finish = function(isValid) {
     $scope.save(isValid, 'thankyou');
   };
+  // when the selectedQuote changes, set the new selectedPremium
+  // so angular will find the right term options and sync the display properly
+  $scope.$watch('interview.selectedQuote', function(newQuote, oldQuote) {
+    if (angular.isDefined($scope.interview.selectedPremium)) {
+      $scope.interview.selectedPremium = Quotes.getPremium(newQuote, $scope.interview.selectedPremium.term)
+    }
+  });
 }])
 
 .controller('InterviewQuoteController', ['$scope', 'Quotes', function($scope, Quotes) {
@@ -86,9 +93,16 @@ angular.module('rdx.interview')
     });
   }
 
-  // when the selected premium changes, set the selectedQuote to the matching premium
-  // so angular will find the right term option and sync the display properly
+  // when the selected premium changes, set the selectedQuote
+  // so angular will display the amount options
   $scope.$watch('interview.selectedPremium', function(newPremium, oldPremium) {
     $scope.interview.selectedQuote = Quotes.getQuote(newPremium, $scope.interview.quotes)
+  });
+  // when the selectedQuote changes, set the new selectedPremium
+  // so angular will find the right term options and sync the display properly
+  $scope.$watch('interview.selectedQuote', function(newQuote, oldQuote) {
+    if (angular.isDefined($scope.interview.selectedPremium)) {
+      $scope.interview.selectedPremium = Quotes.getPremium(newQuote, $scope.interview.selectedPremium.term)
+    }
   });
 }]);

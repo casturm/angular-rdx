@@ -28,7 +28,8 @@ describe('rdx.interview.InterviewQuoteController', function() {
   beforeEach(module(function ($provide) {
     Quotes = {
       getQuotes: function() {},
-      getQuote: function(premium, quotes) {}
+      getQuote: function(premium, quotes) {},
+      getPremium: function(quote, term) {}
     };
     $provide.value('Quotes', Quotes);
   }));

@@ -23,6 +23,18 @@ angular.module('rdx.quotes')
     }
     return selectedQuote
   }
+  factory.getPremium = function(quote, term) {
+    var selectedPremium;
+    if (angular.isDefined(quote)) {
+      angular.forEach(quote.premiums.monthly, function(premium) {
+        if (premium.term == term) {
+          selectedPremium = premium;
+          console.log("new selectedPremium: " + angular.toJson(selectedPremium));
+        }
+      }, selectedPremium);
+    }
+    return selectedPremium
+  }
   return factory;
 }]);
 
