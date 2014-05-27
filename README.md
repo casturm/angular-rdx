@@ -1,7 +1,8 @@
 AngularRDX
 ==========
 
-Example App based on angular-ui-router
+Example App based on AngularJS and angular-ui-router
+ * https://angularjs.org/
  * https://github.com/angular-ui/ui-router
 
 Spec tests written using Jasmine / Karma
@@ -18,18 +19,16 @@ To install dependencies
 To run tests
 -----------------------
 
-      karma start config/karma.conf.js --log-level debug
-
-To run e2e tests
------------------------
-
-      webdriver-manager start
-
-      protractor config/protractor.conf.js
+      npm test
 
 To run app
 -----------------------
 
       npm start
+
+To run e2e tests
+-----------------------
+
+      protractor config/protractor.conf.js
 
 
