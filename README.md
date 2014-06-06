@@ -1,4 +1,4 @@
-AngularRDX
+AngulaRDX
 ==========
 
 Example App based on AngularJS and angular-ui-router
